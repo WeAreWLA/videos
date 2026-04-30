@@ -44,7 +44,7 @@ export const Hook: React.FC = () => {
             marginBottom: 40,
           }}
         >
-          The 21 Day Reset
+          The 21 Day Fat Loss Reset
         </div>
 
         <div
@@ -99,9 +99,9 @@ export const Hook: React.FC = () => {
             maxWidth: 880,
           }}
         >
-          to reset your body, your habits,
+          lose weight. curb cravings.
           <br />
-          and your relationship with food.
+          boost energy.
         </div>
       </AbsoluteFill>
 

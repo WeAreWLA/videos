@@ -161,7 +161,7 @@ export const Recipes: React.FC = () => {
             letterSpacing: 1,
           }}
         >
-          No calorie counting. No guilt.
+          No 1,200-calorie plans. No cutting out carbs.
         </div>
       </div>
 

@@ -78,13 +78,14 @@ export const CTA: React.FC = () => {
             style={{
               fontFamily: alegreya,
               color: colors.blush,
-              fontSize: 30,
-              letterSpacing: 10,
+              fontSize: 28,
+              fontWeight: 600,
+              letterSpacing: 8,
               textTransform: "uppercase",
               marginBottom: 28,
             }}
           >
-            Doors are open
+            Early bird · £80 off
           </div>
           <div
             style={{
@@ -123,9 +124,9 @@ export const CTA: React.FC = () => {
             lineHeight: 1.4,
           }}
         >
-          Lose weight. Gain confidence.
+          Regular £97 · Now £17
           <br />
-          Finally take control of your health.
+          Pre-week Monday 4 May
         </div>
 
         <div
@@ -135,16 +136,28 @@ export const CTA: React.FC = () => {
             background: colors.blush,
             color: colors.navy,
             fontFamily: alegreya,
-            fontSize: 36,
+            fontSize: 32,
             fontWeight: 700,
-            letterSpacing: 4,
+            letterSpacing: 3,
             textTransform: "uppercase",
-            padding: "26px 64px",
+            padding: "26px 56px",
             borderRadius: 100,
             boxShadow: "0 18px 36px rgba(0,0,0,0.25)",
           }}
         >
-          Start your reset
+          Secure your place for £17
+        </div>
+
+        <div
+          style={{
+            fontFamily: alegreya,
+            color: colors.cream,
+            fontSize: 22,
+            opacity: sub * 0.7,
+            letterSpacing: 1,
+          }}
+        >
+          7-day money-back guarantee
         </div>
       </AbsoluteFill>
     </AbsoluteFill>

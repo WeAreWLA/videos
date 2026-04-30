@@ -11,9 +11,18 @@ import { baskerville, alegreya } from "../lib/fonts";
 import { SafeImg } from "../lib/SafeImg";
 
 const items = [
-  { title: "Science-backed nutrition", body: "Built around how women's bodies actually work." },
-  { title: "Daily expert coaching", body: "I'll walk you through every meal, every step." },
-  { title: "A community of women", body: "No solo journeys. We rise together." },
+  {
+    title: "Nutritionist-designed",
+    body: "Built by a Registered Associate Nutritionist for women 45+ navigating menopause.",
+  },
+  {
+    title: "Daily coaching from Anna",
+    body: "I'll walk you through every meal, every step. No guesswork.",
+  },
+  {
+    title: "50,000+ women like you",
+    body: "No more starting over every Monday. Just steady, sustainable change.",
+  },
 ];
 
 const Bullet: React.FC<{

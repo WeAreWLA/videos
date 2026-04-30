@@ -57,7 +57,7 @@ export const Founder: React.FC = () => {
             marginBottom: 28,
           }}
         >
-          For women who are done with diets
+          For women 45+ who've tried it all
         </div>
         <div
           style={{
@@ -71,11 +71,11 @@ export const Founder: React.FC = () => {
             maxWidth: 920,
           }}
         >
-          Real food.
+          Feel like
           <br />
-          <span style={{ fontStyle: "italic", fontWeight: 400 }}>Real life.</span>
+          <span style={{ fontStyle: "italic", fontWeight: 400 }}>you</span> again —
           <br />
-          Real results.
+          in 21 days.
         </div>
       </AbsoluteFill>
     </AbsoluteFill>
