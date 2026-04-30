@@ -119,8 +119,9 @@ export const Recipes: React.FC = () => {
         <div
           style={{
             fontFamily: alegreya,
-            color: colors.blush,
+            color: colors.blushDeep,
             fontSize: 26,
+            fontWeight: 500,
             letterSpacing: 8,
             textTransform: "uppercase",
             marginBottom: 20,

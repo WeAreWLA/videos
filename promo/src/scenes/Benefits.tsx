@@ -45,7 +45,7 @@ const Bullet: React.FC<{
       <div
         style={{
           fontFamily: baskerville,
-          color: colors.blush,
+          color: colors.blushDeep,
           fontSize: 56,
           fontWeight: 700,
           lineHeight: 1,
@@ -133,8 +133,9 @@ export const Benefits: React.FC = () => {
           <div
             style={{
               fontFamily: alegreya,
-              color: colors.blush,
+              color: colors.blushDeep,
               fontSize: 26,
+              fontWeight: 500,
               letterSpacing: 8,
               textTransform: "uppercase",
               marginBottom: 16,

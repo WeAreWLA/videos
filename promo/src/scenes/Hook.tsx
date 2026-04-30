@@ -35,8 +35,9 @@ export const Hook: React.FC = () => {
         <div
           style={{
             fontFamily: alegreya,
-            color: colors.blush,
+            color: colors.blushDeep,
             fontSize: 32,
+            fontWeight: 500,
             letterSpacing: 10,
             textTransform: "uppercase",
             opacity: interpolate(frame, [0, 20], [0, 1], { extrapolateRight: "clamp" }),

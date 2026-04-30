@@ -2,6 +2,7 @@ export const colors = {
   navy: "#003060",
   cream: "#F9F7F4",
   blush: "#F79F83",
+  blushDeep: "#A85138",
   beige: "#E9DFD3",
   ink: "#333333",
 };
