@@ -31,11 +31,11 @@ const RecipeCard: React.FC<{
   });
 
   const positions = [
-    { top: 120, left: 80, w: 520, h: 640, rot: -3 },
-    { top: 80, left: 540, w: 460, h: 580, rot: 4 },
-    { top: 700, left: 60, w: 480, h: 520, rot: 3 },
-    { top: 760, left: 540, w: 480, h: 600, rot: -2 },
-    { top: 1380, left: 160, w: 760, h: 480, rot: 1 },
+    { top: 480, left: 60, w: 460, h: 440, rot: -3 },
+    { top: 460, left: 560, w: 460, h: 440, rot: 4 },
+    { top: 940, left: 60, w: 460, h: 440, rot: 3 },
+    { top: 920, left: 560, w: 460, h: 440, rot: -2 },
+    { top: 1400, left: 280, w: 520, h: 460, rot: 1 },
   ];
 
   const p = positions[index];
@@ -109,19 +109,59 @@ export const Recipes: React.FC = () => {
       <div
         style={{
           position: "absolute",
-          top: 80,
+          top: 110,
           left: 0,
           right: 0,
           textAlign: "center",
-          fontFamily: alegreya,
-          color: colors.blush,
-          fontSize: 28,
-          letterSpacing: 8,
-          textTransform: "uppercase",
           opacity: enter,
         }}
       >
-        Inside the reset
+        <div
+          style={{
+            fontFamily: alegreya,
+            color: colors.blush,
+            fontSize: 26,
+            letterSpacing: 8,
+            textTransform: "uppercase",
+            marginBottom: 20,
+          }}
+        >
+          Inside the reset
+        </div>
+        <div
+          style={{
+            fontFamily: baskerville,
+            color: colors.navy,
+            fontSize: 86,
+            fontWeight: 700,
+            lineHeight: 1,
+          }}
+        >
+          21 days.
+        </div>
+        <div
+          style={{
+            fontFamily: baskerville,
+            color: colors.navy,
+            fontSize: 86,
+            fontStyle: "italic",
+            fontWeight: 400,
+            lineHeight: 1.05,
+          }}
+        >
+          60+ recipes.
+        </div>
+        <div
+          style={{
+            fontFamily: alegreya,
+            color: colors.ink,
+            fontSize: 26,
+            marginTop: 16,
+            letterSpacing: 1,
+          }}
+        >
+          No calorie counting. No guilt.
+        </div>
       </div>
 
       {recipes.map((r, i) => (
@@ -134,52 +174,6 @@ export const Recipes: React.FC = () => {
           exitAt={exitAt}
         />
       ))}
-
-      <div
-        style={{
-          position: "absolute",
-          bottom: 220,
-          left: 0,
-          right: 0,
-          textAlign: "center",
-          opacity: interpolate(frame, [60, 90], [0, 1], { extrapolateRight: "clamp" }),
-        }}
-      >
-        <div
-          style={{
-            fontFamily: baskerville,
-            color: colors.navy,
-            fontSize: 88,
-            fontWeight: 700,
-            lineHeight: 1,
-          }}
-        >
-          21 days.
-        </div>
-        <div
-          style={{
-            fontFamily: baskerville,
-            color: colors.navy,
-            fontSize: 88,
-            fontStyle: "italic",
-            fontWeight: 400,
-            lineHeight: 1.1,
-          }}
-        >
-          60+ recipes.
-        </div>
-        <div
-          style={{
-            fontFamily: alegreya,
-            color: colors.ink,
-            fontSize: 28,
-            marginTop: 18,
-            letterSpacing: 1,
-          }}
-        >
-          No calorie counting. No guilt.
-        </div>
-      </div>
     </AbsoluteFill>
   );
 };

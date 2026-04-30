@@ -1,1 +1,57 @@
-@import "tailwindcss";
+@font-face {
+  font-family: "Libre Baskerville";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("../public/fonts/libre-baskerville-400.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Libre Baskerville";
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+  src: url("../public/fonts/libre-baskerville-700.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Libre Baskerville";
+  font-style: italic;
+  font-weight: 400;
+  font-display: block;
+  src: url("../public/fonts/libre-baskerville-400i.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Libre Baskerville";
+  font-style: italic;
+  font-weight: 700;
+  font-display: block;
+  src: url("../public/fonts/libre-baskerville-700i.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Alegreya Sans";
+  font-style: normal;
+  font-weight: 300;
+  font-display: block;
+  src: url("../public/fonts/alegreya-sans-300.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Alegreya Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("../public/fonts/alegreya-sans-400.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Alegreya Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-display: block;
+  src: url("../public/fonts/alegreya-sans-500.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Alegreya Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+  src: url("../public/fonts/alegreya-sans-700.ttf") format("truetype");
+}
