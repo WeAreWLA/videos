@@ -1,0 +1,323 @@
+/* ============ Bloat-Free Day Meal Guide — print A4 styles ============ */
+
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Alegreya+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap');
+
+:root {
+  --navy: #003060;
+  --navy-deep: #001f40;
+  --cream: #F9F7F4;
+  --blush: #F79F83;
+  --blush-soft: #f7c4b3;
+  --beige: #E9DFD3;
+  --beige-deep: #d8cab8;
+  --ink: #2a2a2a;
+  --grey: #6b6660;
+  --line: rgba(0, 48, 96, 0.16);
+
+  --serif: 'Libre Baskerville', 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Alegreya Sans', 'Helvetica Neue', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: #d6cdc1;
+  font-family: var(--sans);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  padding: 32px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+/* ---------- A4 page ---------- */
+.page {
+  width: 210mm;
+  height: 297mm;
+  background: var(--cream);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06);
+  color: var(--ink);
+  font-size: 11pt;
+  line-height: 1.55;
+}
+
+.page--navy { background: var(--navy); color: var(--cream); }
+.page--beige { background: var(--beige); }
+.page--blush { background: var(--blush); }
+
+/* page chrome / footer */
+.page-footer {
+  position: absolute;
+  left: 18mm;
+  right: 18mm;
+  bottom: 12mm;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--sans);
+  font-size: 8.5pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--navy);
+  opacity: 0.7;
+  font-weight: 500;
+}
+.page--navy .page-footer { color: var(--cream); opacity: 0.6; }
+
+.page-footer .pf-num { font-feature-settings: 'tnum'; }
+
+/* ---------- typography ---------- */
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 8.5pt;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--navy);
+}
+.page--navy .eyebrow { color: var(--blush); }
+
+h1, h2, h3, h4 {
+  font-family: var(--serif);
+  font-weight: 400;
+  color: var(--navy);
+  letter-spacing: -0.01em;
+}
+.page--navy h1, .page--navy h2, .page--navy h3 { color: var(--cream); }
+
+h1 { font-size: 56pt; line-height: 1.0; letter-spacing: -0.025em; }
+h2 { font-size: 32pt; line-height: 1.05; letter-spacing: -0.015em; }
+h3 { font-size: 18pt; line-height: 1.2; }
+h4 { font-size: 12pt; line-height: 1.3; font-family: var(--sans); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--navy); }
+
+.italic { font-style: italic; }
+.serif { font-family: var(--serif); }
+.sans { font-family: var(--sans); }
+
+p { margin-bottom: 0.75em; color: var(--ink); }
+p:last-child { margin-bottom: 0; }
+
+.lead {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14pt;
+  line-height: 1.5;
+  color: var(--navy);
+}
+
+.divider {
+  width: 36px;
+  height: 1px;
+  background: var(--navy);
+  margin: 14px 0;
+  opacity: 0.4;
+}
+.divider--blush { background: var(--blush); opacity: 1; }
+.divider--cream { background: var(--cream); opacity: 0.6; }
+
+.divider-wide {
+  width: 100%;
+  height: 1px;
+  background: var(--line);
+}
+
+/* small caps label */
+.label {
+  font-family: var(--sans);
+  font-size: 8pt;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+/* ---------- shared frame / margins ---------- */
+.frame {
+  position: absolute;
+  inset: 18mm;
+  display: flex;
+  flex-direction: column;
+}
+
+.frame-tight { inset: 14mm 18mm; }
+
+/* logo wordmark */
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--serif);
+  font-size: 9pt;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--navy);
+  font-weight: 700;
+}
+.page--navy .wordmark { color: var(--cream); }
+.wordmark .wm-rule { width: 24px; height: 1px; background: currentColor; opacity: 0.5; }
+
+/* tag pill */
+.pill {
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--navy);
+  font-family: var(--sans);
+  font-size: 8pt;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--navy);
+}
+.pill--blush { background: var(--blush); border-color: var(--blush); color: var(--navy); }
+.pill--filled { background: var(--navy); color: var(--cream); }
+.page--navy .pill { border-color: var(--cream); color: var(--cream); }
+
+/* ============ photo placeholders (AI-style stock imagery) ============ */
+.photo {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+}
+
+/* duotone treatment — applies blush wash on top of any image so they all feel brand-consistent */
+.photo--duotone::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(247, 159, 131, 0.18), rgba(0, 48, 96, 0.12));
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.photo--warm::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(233, 223, 211, 0.05), rgba(247, 159, 131, 0.18));
+  pointer-events: none;
+}
+
+/* photo caption */
+.caption {
+  position: absolute;
+  bottom: 12px;
+  left: 14px;
+  right: 14px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 9pt;
+  color: var(--cream);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+  letter-spacing: 0.01em;
+}
+
+/* hand-drawn corner ornament */
+.corner-mark {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 12pt;
+  color: var(--blush);
+}
+
+/* numbered list (editorial) */
+.num-list { list-style: none; }
+.num-list li {
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  gap: 14px;
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+  align-items: baseline;
+}
+.num-list li:last-child { border-bottom: 1px solid var(--line); }
+.num-list .n {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22pt;
+  color: var(--blush);
+  line-height: 1;
+}
+.num-list h4 { margin-bottom: 4px; }
+.num-list p { font-size: 10pt; color: var(--grey); margin: 0; }
+
+/* check-style list */
+.dot-list { list-style: none; }
+.dot-list li {
+  position: relative;
+  padding: 6px 0 6px 22px;
+  font-size: 10.5pt;
+  border-bottom: 1px dashed var(--line);
+}
+.dot-list li:last-child { border-bottom: 0; }
+.dot-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 14px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--blush);
+}
+.dot-list--navy li::before { background: var(--navy); }
+.dot-list--cross li::before {
+  background: transparent;
+  border: 1px solid var(--navy);
+  opacity: 0.5;
+  border-radius: 0;
+  width: 8px;
+  height: 8px;
+  top: 16px;
+}
+
+/* checkbox style for shopping list */
+.check-list { list-style: none; }
+.check-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 0;
+  font-size: 10pt;
+  border-bottom: 1px dotted var(--line);
+}
+.check-list .box {
+  flex: none;
+  width: 12px;
+  height: 12px;
+  border: 1.2px solid var(--navy);
+  border-radius: 2px;
+}
+
+/* helpers */
+.flex { display: flex; }
+.grow { flex: 1; }
+.center { display: flex; align-items: center; justify-content: center; }
+.text-center { text-align: center; }
+.uppercase { text-transform: uppercase; letter-spacing: 0.2em; }
+.mt-auto { margin-top: auto; }
+
+.col-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10mm; }
+.col-2-tight { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; }
+
+/* corner serif */
+.corner-x {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14pt;
+  color: var(--blush);
+  margin-top: 8px;
+  display: inline-block;
+}
+
+/* ===== specific component blocks defined per page in their own files ===== */
