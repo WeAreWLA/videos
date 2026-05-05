@@ -96,15 +96,15 @@
   .science-card p { font-size: 10pt; line-height: 1.55; color: var(--grey); }
 
   .timeline-page { background: var(--beige); }
-  .timeline { flex: 1; position: relative; padding-left: 44mm; }
-  .timeline::before { content: ''; position: absolute; left: 36mm; top: 4mm; bottom: 4mm; width: 1px; background: var(--navy); opacity: 0.3; }
-  .tl-row { position: relative; padding: 4mm 0; border-bottom: 1px solid rgba(0,48,96,0.12); }
+  .timeline { flex: 1; position: relative; padding-left: 32mm; }
+  .timeline::before { content: ''; position: absolute; left: 24mm; top: 4mm; bottom: 4mm; width: 1px; background: var(--navy); opacity: 0.3; }
+  .tl-row { position: relative; padding: 3mm 0; border-bottom: 1px solid rgba(0,48,96,0.12); }
   .tl-row:last-child { border-bottom: 0; }
-  .tl-time { position: absolute; left: -44mm; top: 5mm; width: 30mm; text-align: right; font-family: var(--serif); font-style: italic; font-size: 11pt; color: var(--navy); line-height: 1.15; }
+  .tl-time { position: absolute; left: -32mm; top: 4mm; width: 22mm; text-align: right; font-family: var(--serif); font-style: italic; font-size: 10.5pt; color: var(--navy); line-height: 1.2; }
   .tl-time .clock { display: block; font-family: var(--sans); font-style: normal; font-size: 8pt; letter-spacing: 0.18em; text-transform: uppercase; color: var(--grey); font-weight: 500; margin-top: 2px; }
-  .tl-row::before { content: ''; position: absolute; left: -8mm; top: 9mm; width: 9px; height: 9px; border-radius: 50%; background: var(--blush); border: 2px solid var(--beige); }
-  .tl-content h4 { margin-bottom: 2mm; font-size: 11pt; }
-  .tl-content p { font-size: 9.5pt; color: var(--ink); line-height: 1.5; }
+  .tl-row::before { content: ''; position: absolute; left: -8mm; top: 8mm; width: 9px; height: 9px; border-radius: 50%; background: var(--blush); border: 2px solid var(--beige); }
+  .tl-content h4 { margin-bottom: 1.5mm; font-size: 10.5pt; }
+  .tl-content p { font-size: 9.5pt; color: var(--ink); line-height: 1.45; }
   .tl-content .tag { display: inline-block; margin-top: 3mm; font-family: var(--sans); font-size: 7.5pt; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; color: var(--navy); opacity: 0.65; }
   .tl-thumb { height: 32mm; width: 100%; }
 
@@ -205,7 +205,12 @@
   .ma-list .ma-item:first-child { border-top: 1px solid var(--line); }
   .ma-item h4 { font-size: 11pt; margin-bottom: 2mm; }
   .ma-item p { font-size: 9.5pt; color: var(--grey); }
-  .ma-truth { margin-top: 5mm; padding: 6mm; background: var(--beige); font-family: var(--serif); font-style: italic; font-size: 10.5pt; line-height: 1.5; color: var(--navy); }
+  .ma-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 8mm 14mm; margin-top: 10mm; }
+  .ma-card { display: grid; grid-template-columns: 32px 1fr; gap: 16px; align-items: start; }
+  .ma-card .n { font-family: var(--serif); font-style: italic; font-size: 22pt; color: var(--blush); line-height: 0.9; }
+  .ma-card h4 { margin-bottom: 2mm; font-size: 10.5pt; }
+  .ma-card p { font-size: 10pt; line-height: 1.55; color: var(--grey); }
+  .ma-truth { margin-top: auto; padding: 7mm 8mm; background: var(--beige); font-family: var(--serif); font-style: italic; font-size: 11pt; line-height: 1.55; color: var(--navy); border-left: 3px solid var(--blush); }
 
   .reset-page { background: var(--blush); color: var(--navy); }
   .reset-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14mm; flex: 1; }
@@ -629,7 +634,7 @@
       </div>
 
       <div class="tl-row">
-        <div class="tl-time" style="white-space:nowrap;">Throughout the day</div>
+        <div class="tl-time">Throughout<br/>the day</div>
         <div class="tl-content" style="grid-column: 1 / -1;">
           <h4>Water, water, water</h4>
           <p>Aim for around 8 glasses. Add lemon, cucumber, or fresh mint if plain water bores you. One milky coffee is fine — keep the rest as tea or water.</p>
@@ -1298,25 +1303,20 @@
 <!-- ====================== PAGE 13 — MORNING AFTER ====================== -->
 <section class="page" data-screen-label="13 Morning After">
   <div class="frame">
-    <h2 style="margin-top:5mm;">What you'll likely notice<br/><span class="b">tomorrow.</span></h2>
+    <h2 style="font-style:italic;">What you'll likely notice<br/><span class="b">tomorrow.</span></h2>
+    <p style="font-family:var(--serif); font-style:italic; font-size:13pt; line-height:1.5; color:var(--navy); margin-top:5mm; max-width:140mm;">
+      Most women who follow this for one full day wake up feeling noticeably lighter. Here's what to look out for, and what to do with it.
+    </p>
 
-    <div class="ma-grid" style="margin-top:6mm; grid-template-columns: 1fr;">
-      <div>
-        <p style="font-family:var(--serif); font-style:italic; font-size:11pt; color:var(--navy);">
-          Most women who follow this for one full day wake up feeling noticeably lighter. Here's what to look out for, and what to do with it.
-        </p>
+    <div class="ma-cards">
+      <div class="ma-card"><div class="n">01</div><div><h4>A flatter, calmer tummy</h4><p>The most common one. Your body has had a chance to release the water it was holding on to.</p></div></div>
+      <div class="ma-card"><div class="n">02</div><div><h4>Better sleep</h4><p>An earlier, lighter dinner usually means deeper sleep, which itself reduces inflammation and bloating.</p></div></div>
+      <div class="ma-card"><div class="n">03</div><div><h4>Steadier energy</h4><p>No 11am dip. No 3pm crash. This is what eating in rhythm with your body actually feels like.</p></div></div>
+      <div class="ma-card"><div class="n">04</div><div><h4>Less appetite for sugar</h4><p>Protein-led meals quietly rebalance your hunger signals. Most women notice this on day two.</p></div></div>
+    </div>
 
-        <div class="ma-list" style="margin-top:5mm;">
-          <div class="ma-item"><h4>A flatter, calmer tummy</h4><p>The most common one. Your body has had a chance to release the water it was holding on to.</p></div>
-          <div class="ma-item"><h4>Better sleep</h4><p>An earlier, lighter dinner usually means deeper sleep, which itself reduces inflammation and bloating.</p></div>
-          <div class="ma-item"><h4>Steadier energy</h4><p>No 11am dip. No 3pm crash. This is what eating in rhythm with your body actually feels like.</p></div>
-          <div class="ma-item"><h4>Less appetite for sugar</h4><p>Protein-led meals quietly rebalance your hunger signals. Most women notice this on day two.</p></div>
-        </div>
-
-        <div class="ma-truth">
-          The honest truth: one bloat-free day will give you a lovely morning. It won't change your body long-term on its own. To actually drop a dress size and feel back in control around food, you need a real system, that's what the 21 Day Reset is built for. Find it at <span style="font-weight:700;">join.wearewla.com/21-day-reset</span>.
-        </div>
-      </div>
+    <div class="ma-truth">
+      The honest truth: one bloat-free day will give you a lovely morning. It won't change your body long-term on its own. To actually drop a dress size and feel back in control around food, you need a real system, that's what the 21 Day Reset is built for. Find it at <span style="font-weight:700;">join.wearewla.com/21-day-reset</span>.
     </div>
   </div>
 
