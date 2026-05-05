@@ -182,12 +182,8 @@
   .shop-col h4 { color: var(--blush); margin-bottom: 4mm; font-size: 9.5pt; }
 
   .wd-page { background: var(--beige); }
-  .wd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12mm; flex: 1; }
-  .wd-photo { height: 100%; min-height: 200mm; }
-  .wd-text h2 { font-style: italic; }
-  .wd-text h2 .b { font-style: normal; font-weight: 700; }
+  .wd-steps { display: grid; grid-template-columns: 1fr 1fr; gap: 0 14mm; margin-top: 10mm; flex: 1; align-content: start; }
   .wd-step { padding: 5mm 0; border-top: 1px solid rgba(0,48,96,0.18); display: grid; grid-template-columns: 60px 1fr; gap: 14px; align-items: baseline; }
-  .wd-step:last-child { border-bottom: 1px solid rgba(0,48,96,0.18); }
   .wd-step .time { font-family: var(--serif); font-style: italic; font-size: 14pt; color: var(--navy); }
   .wd-step h4 { margin-bottom: 1mm; font-size: 10.5pt; }
   .wd-step p { font-size: 9.5pt; color: var(--grey); line-height: 1.5; }
@@ -1249,25 +1245,19 @@
 
 <!-- ====================== PAGE 11 — WIND DOWN ====================== -->
 <section class="page wd-page" data-screen-label="11 Wind Down">
-  <div class="frame wd-grid">
-    <div class="wd-photo photo photo-warm-bath">
-      <div class="photo-icon"><svg viewBox="0 0 100 100"><use href="#ic-candle"/></svg></div>
-      <div class="photo-caption">An earlier evening · a calmer morning</div>
-    </div>
-    <div class="wd-text" style="display:flex; flex-direction:column;">
-      <h2 style="margin-top:5mm;">Your before-bed<br/><span class="b">ritual.</span></h2>
-      <p style="font-family:var(--serif); font-style:italic; font-size:11pt; color:var(--navy); margin-top:5mm;">
-        How you end the day matters as much as how you start it. A calm evening means a calm gut tomorrow.
-      </p>
+  <div class="frame">
+    <h2 style="font-style:italic;">Your before-bed<br/><span class="b">ritual.</span></h2>
+    <p style="font-family:var(--serif); font-style:italic; font-size:13pt; line-height:1.5; color:var(--navy); margin-top:5mm; max-width:140mm;">
+      How you end the day matters as much as how you start it. A calm evening means a calm gut tomorrow.
+    </p>
 
-      <div style="margin-top:5mm; flex:1;">
-        <div class="wd-step"><div class="time">−2h</div><div><h4>Finish dinner</h4><p>At least two hours before bed. Your digestion slows down dramatically once you're horizontal.</p></div></div>
-        <div class="wd-step"><div class="time">−90m</div><div><h4>10-minute walk</h4><p>Gentle movement after dinner is the single best thing you can do for digestion. Around the block is plenty.</p></div></div>
-        <div class="wd-step"><div class="time">−60m</div><div><h4>Last sip of water</h4><p>Stop drinking now, so you sleep through undisturbed.</p></div></div>
-        <div class="wd-step"><div class="time">−45m</div><div><h4>Peppermint or chamomile tea</h4><p>If you're still craving sweetness, this usually settles it. Both are gut-soothing.</p></div></div>
-        <div class="wd-step"><div class="time">−15m</div><div><h4>Phone away. Lights low.</h4><p>Cortisol drops, melatonin rises, gut repairs overnight. The unsexy science of feeling lighter tomorrow.</p></div></div>
-        <div class="wd-step"><div class="time">00</div><div><h4>Sleep, earlier than you think</h4><p>Most women find 7.5–8 hours dramatically reduces morning bloat. Sleep is digestion's rest day.</p></div></div>
-      </div>
+    <div class="wd-steps">
+      <div class="wd-step"><div class="time">−2h</div><div><h4>Finish dinner</h4><p>At least two hours before bed. Your digestion slows down dramatically once you're horizontal.</p></div></div>
+      <div class="wd-step"><div class="time">−90m</div><div><h4>10-minute walk</h4><p>Gentle movement after dinner is the single best thing you can do for digestion. Around the block is plenty.</p></div></div>
+      <div class="wd-step"><div class="time">−60m</div><div><h4>Last sip of water</h4><p>Stop drinking now, so you sleep through undisturbed.</p></div></div>
+      <div class="wd-step"><div class="time">−45m</div><div><h4>Peppermint or chamomile tea</h4><p>If you're still craving sweetness, this usually settles it. Both are gut-soothing.</p></div></div>
+      <div class="wd-step"><div class="time">−15m</div><div><h4>Phone away. Lights low.</h4><p>Cortisol drops, melatonin rises, gut repairs overnight. The unsexy science of feeling lighter tomorrow.</p></div></div>
+      <div class="wd-step"><div class="time">00</div><div><h4>Sleep, earlier than you think</h4><p>Most women find 7.5–8 hours dramatically reduces morning bloat. Sleep is digestion's rest day.</p></div></div>
     </div>
   </div>
 
