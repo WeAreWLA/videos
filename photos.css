@@ -1,0 +1,135 @@
+/* ============ Photo placeholders — for user to replace ============
+   Clean, labelled placeholder blocks. Each shows a hairline border,
+   a centred placeholder mark, and a small caption telling the user
+   what kind of image to put there. No AI illustrations.
+============================================================ */
+
+.photo {
+  position: relative;
+  overflow: hidden;
+  background: #f4ead9;
+  border: 1px solid rgba(0, 48, 96, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* diagonal "image goes here" hatch — subtle */
+.photo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(135deg,
+      transparent 0,
+      transparent 49.5%,
+      rgba(0,48,96,0.10) 49.5%,
+      rgba(0,48,96,0.10) 50.5%,
+      transparent 50.5%,
+      transparent 100%);
+  pointer-events: none;
+}
+
+/* the "image" mark in the centre */
+.photo-placeholder {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4mm;
+  text-align: center;
+  padding: 6mm;
+  color: rgba(0, 48, 96, 0.55);
+}
+.photo-placeholder svg {
+  width: 28px;
+  height: 28px;
+  display: block;
+}
+.photo-placeholder .ph-label {
+  font-family: var(--sans);
+  font-size: 7.5pt;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: rgba(0, 48, 96, 0.6);
+}
+.photo-placeholder .ph-desc {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 9pt;
+  line-height: 1.4;
+  color: rgba(0, 48, 96, 0.55);
+  max-width: 80%;
+}
+
+/* tonal variants kept as light cream/beige so they don't fight the page */
+.photo-blush,
+.photo-beige,
+.photo-warm-beige,
+.photo-cream,
+.photo-soft-pink,
+.photo-dawn,
+.photo-still-water,
+.photo-lemon-tea,
+.photo-eggs-salmon,
+.photo-smoothie,
+.photo-shakshuka,
+.photo-asian-salad,
+.photo-salmon-veg,
+.photo-soup,
+.photo-cod,
+.photo-mushrooms,
+.photo-broth,
+.photo-linen,
+.photo-tea-pour,
+.photo-fruits,
+.photo-water-pour,
+.photo-bedroom,
+.photo-author,
+.photo-window-light {
+  background: #f4ead9;
+}
+
+.photo-navy,
+.photo-dusk,
+.photo-warm-bath {
+  background: #f4ead9;
+}
+
+/* dim caption styling — kept compatible with old markup */
+.photo-corner {
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  z-index: 3;
+  font-family: var(--sans);
+  font-size: 7pt;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: rgba(0, 48, 96, 0.5);
+}
+.photo-caption {
+  position: absolute;
+  bottom: 8px;
+  left: 12px;
+  right: 12px;
+  z-index: 3;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 8.5pt;
+  color: rgba(0, 48, 96, 0.55);
+  letter-spacing: 0.01em;
+  text-align: center;
+}
+
+/* hide old photo-icon containers entirely (they held SVG illustrations) */
+.photo-icon { display: none !important; }
+
+/* when a photo has a real image, drop placeholder chrome */
+.photo.has-image { background-color: transparent; border: 0; }
+.photo.has-image::before { display: none; }
+.photo.has-image .photo-placeholder { display: none; }
