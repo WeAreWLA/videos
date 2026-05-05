@@ -1,0 +1,1325 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>The Bloat-Free Day — A Free Guide</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="photos.css" />
+<style>
+  /* page-specific layouts */
+  .cover { background: var(--cream); }
+  .cover .frame { inset: 16mm; }
+  .cover-top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .cover-tag {
+    font-family: var(--sans); font-size: 8.5pt; letter-spacing: 0.32em;
+    text-transform: uppercase; color: var(--navy); font-weight: 600;
+  }
+  .cover-title {
+    font-family: var(--serif); color: var(--navy);
+    font-size: 96pt; line-height: 0.94; letter-spacing: -0.035em;
+    font-style: italic; font-weight: 400;
+    margin-top: auto;
+  }
+  .cover-title .b { font-style: normal; font-weight: 700; }
+  .cover-sub {
+    font-family: var(--serif); font-style: italic;
+    font-size: 14pt; line-height: 1.45; color: var(--navy);
+    max-width: 110mm; margin-top: 14mm;
+  }
+  .cover-bottom {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    margin-top: 10mm;
+  }
+  .cover-photo {
+    position: absolute; right: 16mm; top: 30mm;
+    width: 70mm; height: 92mm;
+  }
+  .cover-mark {
+    position: absolute; left: 16mm; top: 36mm;
+    font-family: var(--serif); font-style: italic;
+    font-size: 11pt; color: var(--blush);
+    letter-spacing: 0.02em;
+  }
+
+  .welcome-grid { flex: 1; display: grid; grid-template-columns: 1fr 1.05fr; gap: 12mm; align-items: stretch; }
+  .welcome-photo { width: 100%; height: 100%; min-height: 200mm; }
+  .welcome-text { display: flex; flex-direction: column; justify-content: center; padding: 6mm 0; }
+  .welcome-text h2 { font-style: italic; margin-bottom: 8mm; }
+  .welcome-text h2 .b { font-style: normal; font-weight: 700; }
+  .welcome-text p { font-size: 11pt; color: var(--ink); line-height: 1.65; }
+  .signoff { margin-top: 8mm; }
+  .signoff .x { font-family: var(--serif); font-style: italic; font-size: 22pt; color: var(--blush); line-height: 1; }
+  .signoff .who { font-family: var(--sans); font-size: 9pt; letter-spacing: 0.18em; text-transform: uppercase; color: var(--navy); margin-top: 4mm; font-weight: 600; }
+
+  .author-hero {
+    height: 95mm; width: calc(100% + 36mm);
+    margin: -18mm -18mm 0 -18mm; position: relative;
+  }
+  .author-mid { padding: 12mm 0 0 0; }
+  .author-mid h2 { max-width: 140mm; }
+  .author-mid h2 .b { font-style: normal; font-weight: 700; }
+  .author-cols { display: grid; grid-template-columns: 1.1fr 1fr; gap: 14mm; margin-top: 8mm; }
+  .author-cols p { font-size: 10.5pt; }
+  .author-quote {
+    border-left: 2px solid var(--blush);
+    padding: 4px 0 4px 14px;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 13pt;
+    line-height: 1.45;
+    color: var(--navy);
+    margin: 6mm 0;
+  }
+  .author-creds {
+    display: flex; gap: 10mm; margin-top: 8mm;
+    border-top: 1px solid var(--line); padding-top: 8mm;
+  }
+  .author-creds .cred {
+    font-family: var(--serif);
+    font-size: 24pt; line-height: 1; color: var(--navy);
+    font-weight: 700;
+  }
+  .author-creds .cred span {
+    display: block; font-family: var(--sans);
+    font-size: 8pt; letter-spacing: 0.2em; text-transform: uppercase;
+    font-weight: 500; color: var(--grey); margin-top: 4px;
+  }
+
+  .science-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 10mm; }
+  .science-head h2 { max-width: 140mm; }
+  .science-head h2 .b { font-style: normal; font-weight: 700; }
+  .science-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8mm 14mm; flex: 1; align-content: start; }
+  .science-card { display: grid; grid-template-columns: 32px 1fr; gap: 18px; }
+  .science-card .n { font-family: var(--serif); font-style: italic; font-size: 20pt; color: var(--blush); line-height: 0.9; }
+  .science-card h4 { margin-bottom: 3mm; font-size: 10.5pt; }
+  .science-card p { font-size: 10pt; line-height: 1.55; color: var(--grey); }
+
+  .timeline-page { background: var(--beige); }
+  .timeline { flex: 1; position: relative; padding-left: 44mm; }
+  .timeline::before { content: ''; position: absolute; left: 36mm; top: 4mm; bottom: 4mm; width: 1px; background: var(--navy); opacity: 0.3; }
+  .tl-row { position: relative; padding: 4mm 0; border-bottom: 1px solid rgba(0,48,96,0.12); }
+  .tl-row:last-child { border-bottom: 0; }
+  .tl-time { position: absolute; left: -44mm; top: 5mm; width: 30mm; text-align: right; font-family: var(--serif); font-style: italic; font-size: 11pt; color: var(--navy); line-height: 1.15; }
+  .tl-time .clock { display: block; font-family: var(--sans); font-style: normal; font-size: 8pt; letter-spacing: 0.18em; text-transform: uppercase; color: var(--grey); font-weight: 500; margin-top: 2px; }
+  .tl-row::before { content: ''; position: absolute; left: -8mm; top: 9mm; width: 9px; height: 9px; border-radius: 50%; background: var(--blush); border: 2px solid var(--beige); }
+  .tl-content h4 { margin-bottom: 2mm; font-size: 11pt; }
+  .tl-content p { font-size: 9.5pt; color: var(--ink); line-height: 1.5; }
+  .tl-content .tag { display: inline-block; margin-top: 3mm; font-family: var(--sans); font-size: 7.5pt; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; color: var(--navy); opacity: 0.65; }
+  .tl-thumb { height: 32mm; width: 100%; }
+
+  .meals-head { margin-bottom: 6mm; }
+  .meals-head h2 { font-style: italic; }
+  .meals-head h2 .b { font-style: normal; font-weight: 700; }
+  .meal-row { display: grid; grid-template-columns: 60mm 1fr; gap: 8mm; padding: 6mm 0; border-top: 1px solid var(--line); }
+  .meal-row:last-child { border-bottom: 1px solid var(--line); }
+  .meal-photo { height: 44mm; width: 100%; }
+  .meal-text .meal-eyebrow { font-family: var(--sans); font-size: 8pt; letter-spacing: 0.24em; text-transform: uppercase; color: var(--blush); font-weight: 700; margin-bottom: 2mm; }
+  .meal-text h3 { font-style: italic; font-size: 17pt; margin-bottom: 3mm; }
+  .meal-text p { font-size: 9.5pt; color: var(--grey); line-height: 1.5; }
+  .meal-text .meal-meta { display: flex; gap: 14px; margin-top: 3mm; font-family: var(--sans); font-size: 8pt; letter-spacing: 0.18em; text-transform: uppercase; color: var(--navy); font-weight: 600; }
+  .meal-text .meal-meta span { opacity: 0.7; }
+
+  /* recipe index — breakfast intro page */
+  .recipe-index { display: flex; flex-direction: column; }
+  .ri-row { display: grid; grid-template-columns: 22mm 1fr auto; gap: 8mm; align-items: baseline; padding: 6mm 0; border-top: 1px solid var(--line); }
+  .ri-row:last-child { border-bottom: 1px solid var(--line); }
+  .ri-num { font-family: var(--sans); font-size: 8.5pt; letter-spacing: 0.24em; text-transform: uppercase; color: var(--blush); font-weight: 700; }
+  .ri-title { font-family: var(--serif); font-style: italic; font-size: 18pt; color: var(--navy); }
+  .ri-meta { font-family: var(--sans); font-size: 8.5pt; letter-spacing: 0.16em; text-transform: uppercase; color: var(--grey); font-weight: 500; }
+
+  /* full-bleed recipe page: photo top half, content lower half */
+  .recipe-page { background: var(--cream); }
+  .recipe-photo { position: absolute; left: 0; right: 0; top: 0; height: 70mm; width: 100%; background-size: cover; background-position: center; }
+  .recipe-frame { position: absolute; inset: 78mm 18mm 18mm 18mm; display: flex; flex-direction: column; }
+  .recipe-eyebrow { font-family: var(--sans); font-size: 8.5pt; letter-spacing: 0.28em; text-transform: uppercase; color: var(--blush); font-weight: 700; margin-bottom: 4mm; }
+  .recipe-frame h2 { line-height: 1; letter-spacing: -0.02em; }
+  .recipe-meta { font-family: var(--sans); font-size: 8.5pt; letter-spacing: 0.22em; text-transform: uppercase; color: var(--grey); font-weight: 600; margin-top: 5mm; padding-bottom: 5mm; border-bottom: 1px solid var(--line); }
+  .recipe-cols { display: grid; grid-template-columns: 1fr 1.15fr; gap: 12mm; margin-top: 6mm; flex: 1; }
+  .recipe-col h4 { font-size: 9pt; letter-spacing: 0.24em; color: var(--blush); margin-bottom: 4mm; }
+  .recipe-list { list-style: none; padding: 0; }
+  .recipe-list li { position: relative; padding: 1.2mm 0 1.2mm 6mm; font-size: 9.5pt; line-height: 1.35; color: var(--ink); border-bottom: 1px dotted var(--line); }
+  .recipe-list li:last-child { border-bottom: 0; }
+  .recipe-list li::before { content: ''; position: absolute; left: 0; top: 3.5mm; width: 5px; height: 5px; border-radius: 50%; background: var(--blush); }
+  .recipe-list .note { font-family: var(--serif); font-style: italic; color: var(--grey); font-size: 9pt; }
+  .recipe-steps { list-style: none; padding: 0; counter-reset: step; }
+  .recipe-steps li { counter-increment: step; position: relative; padding: 1.2mm 0 1.2mm 9mm; font-size: 9.5pt; line-height: 1.4; color: var(--ink); border-bottom: 1px dotted var(--line); }
+  .recipe-steps li:last-child { border-bottom: 0; }
+  .recipe-steps li::before { content: counter(step, decimal-leading-zero); position: absolute; left: 0; top: 1.5mm; font-family: var(--serif); font-style: italic; font-size: 10.5pt; color: var(--blush); font-weight: 400; }
+  .recipe-tip { margin-top: 4mm; padding: 4mm; background: var(--beige); border-left: 2px solid var(--blush); }
+  .recipe-tip .tip-label { font-family: var(--sans); font-size: 8pt; letter-spacing: 0.24em; text-transform: uppercase; color: var(--navy); font-weight: 700; margin-bottom: 2mm; }
+  .recipe-tip p { font-family: var(--serif); font-style: italic; font-size: 9.5pt; line-height: 1.5; color: var(--navy); margin: 0; }
+
+  .foodlist-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10mm; flex: 1; margin-top: 8mm; }
+  .foodlist-col h3 { font-size: 22pt; font-style: italic; margin-bottom: 4mm; }
+  .fl-card { border: 1px solid var(--line); padding: 8mm; flex: 1; background: rgba(255,255,255,0.4); }
+  .fl-card--leave { background: transparent; border-style: dashed; opacity: 0.85; }
+  .fl-card .label { color: var(--blush); font-weight: 700; margin-bottom: 4mm; display: block; }
+  .fl-card--leave .label { color: var(--navy); opacity: 0.6; }
+
+  .hydration-page { background: var(--navy); color: var(--cream); }
+  .hydration-page .frame { color: var(--cream); }
+  .hydration-page h2 { color: var(--cream); }
+  .hydration-page h4 { color: var(--blush); }
+  .hydration-page p { color: rgba(249,247,244,0.85); }
+  .hydration-page .eyebrow { color: var(--blush); }
+  .hydra-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 14mm; flex: 1; align-items: stretch; }
+  .hydra-stat { border-top: 1px solid rgba(249,247,244,0.18); padding-top: 6mm; margin-top: 4mm; }
+  .hydra-stat .big { font-family: var(--serif); font-size: 56pt; line-height: 1; color: var(--blush); letter-spacing: -0.02em; font-weight: 400; }
+  .hydra-stat .big .u { font-size: 24pt; vertical-align: super; margin-left: 4px; font-style: italic; }
+  .hydra-stat .lbl { display: block; font-family: var(--sans); font-size: 9pt; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream); margin-top: 2mm; opacity: 0.75; }
+  .hydra-tips { display: flex; flex-direction: column; gap: 4mm; }
+  .hydra-tip { display: grid; grid-template-columns: 36px 1fr; gap: 12px; padding-bottom: 4mm; border-bottom: 1px solid rgba(249,247,244,0.15); }
+  .hydra-tip:last-child { border-bottom: 0; }
+  .hydra-tip .num { font-family: var(--serif); font-style: italic; font-size: 22pt; color: var(--blush); line-height: 0.9; }
+  .hydra-tip h4 { font-size: 10.5pt; margin-bottom: 2mm; }
+  .hydra-tip p { font-size: 9.5pt; line-height: 1.5; }
+
+  .shop-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 6mm; }
+  .shop-head h2 { font-style: italic; max-width: 140mm; }
+  .shop-head h2 .b { font-style: normal; font-weight: 700; }
+  .shop-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10mm; flex: 1; }
+  .shop-col h4 { color: var(--blush); margin-bottom: 4mm; font-size: 9.5pt; }
+
+  .wd-page { background: var(--beige); }
+  .wd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12mm; flex: 1; }
+  .wd-photo { height: 100%; min-height: 200mm; }
+  .wd-text h2 { font-style: italic; }
+  .wd-text h2 .b { font-style: normal; font-weight: 700; }
+  .wd-step { padding: 5mm 0; border-top: 1px solid rgba(0,48,96,0.18); display: grid; grid-template-columns: 60px 1fr; gap: 14px; align-items: baseline; }
+  .wd-step:last-child { border-bottom: 1px solid rgba(0,48,96,0.18); }
+  .wd-step .time { font-family: var(--serif); font-style: italic; font-size: 14pt; color: var(--navy); }
+  .wd-step h4 { margin-bottom: 1mm; font-size: 10.5pt; }
+  .wd-step p { font-size: 9.5pt; color: var(--grey); line-height: 1.5; }
+
+  .cheat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm 14mm; flex: 1; margin-top: 6mm; align-content: start; }
+  .cheat-card { padding: 5mm 0; border-top: 1px solid var(--line); display: grid; grid-template-columns: 36px 1fr; gap: 12px; align-items: baseline; }
+  .cheat-card .n { font-family: var(--serif); font-style: italic; font-size: 22pt; color: var(--blush); line-height: 1; }
+  .cheat-card h4 { font-size: 11pt; margin-bottom: 2mm; }
+  .cheat-card p { font-size: 9.5pt; color: var(--grey); line-height: 1.5; }
+  .cheat-foot { margin-top: auto; padding-top: 6mm; border-top: 1px solid var(--line); font-family: var(--serif); font-style: italic; font-size: 11pt; color: var(--navy); text-align: center; }
+
+  .ma-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12mm; flex: 1; }
+  .ma-photo { width: 100%; height: 100%; min-height: 200mm; }
+  .ma-list .ma-item { padding: 5mm 0; border-bottom: 1px solid var(--line); }
+  .ma-list .ma-item:first-child { border-top: 1px solid var(--line); }
+  .ma-item h4 { font-size: 11pt; margin-bottom: 2mm; }
+  .ma-item p { font-size: 9.5pt; color: var(--grey); }
+  .ma-truth { margin-top: 5mm; padding: 6mm; background: var(--beige); font-family: var(--serif); font-style: italic; font-size: 10.5pt; line-height: 1.5; color: var(--navy); }
+
+  .reset-page { background: var(--blush); color: var(--navy); }
+  .reset-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14mm; flex: 1; }
+  .reset-page .eyebrow { color: var(--navy); }
+  .reset-page h1 { color: var(--navy); font-style: italic; font-size: 64pt; line-height: 0.95; letter-spacing: -0.025em; }
+  .reset-page h1 .b { font-style: normal; font-weight: 700; }
+  .reset-page p { color: var(--navy); }
+  .reset-list { list-style: none; margin-top: 6mm; }
+  .reset-list li { padding: 5mm 0; border-top: 1px solid rgba(0,48,96,0.25); font-size: 11pt; display: grid; grid-template-columns: 18px 1fr; gap: 12px; align-items: baseline; color: var(--navy); }
+  .reset-list li:last-child { border-bottom: 1px solid rgba(0,48,96,0.25); }
+  .reset-list .chk { font-family: var(--serif); font-style: italic; font-size: 16pt; color: var(--navy); line-height: 0.8; }
+  .reset-cta { margin-top: auto; padding: 8mm; background: var(--cream); display: flex; align-items: center; gap: 8mm; border: 1px solid var(--navy); }
+  .qr-box { width: 28mm; height: 28mm; flex: none; background: var(--navy); display: grid; grid-template-columns: repeat(7, 1fr); grid-template-rows: repeat(7, 1fr); padding: 3px; gap: 1px; }
+  .qr-box span { background: var(--cream); }
+  .qr-box span.on { background: transparent; }
+  .reset-cta .cta-text { flex: 1; }
+  .reset-cta .cta-text h4 { color: var(--navy); font-size: 13pt; margin-bottom: 2mm; font-family: var(--serif); font-weight: 700; text-transform: none; letter-spacing: 0; }
+  .reset-cta .cta-text p { color: var(--ink); font-size: 9.5pt; }
+  .reset-cta .cta-text .url { font-family: var(--sans); font-weight: 700; font-size: 10pt; letter-spacing: 0.06em; color: var(--navy); margin-top: 2mm; }
+
+  .closing { display: flex; flex-direction: column; justify-content: center; flex: 1; align-items: center; text-align: center; }
+  .closing .eyebrow { margin-bottom: 6mm; }
+  .closing h1 { font-style: italic; font-size: 56pt; line-height: 1.0; max-width: 150mm; letter-spacing: -0.02em; text-wrap: pretty; }
+  .closing h1 .b { font-style: normal; font-weight: 700; }
+  .closing p { max-width: 130mm; margin-top: 8mm; font-family: var(--serif); font-style: italic; font-size: 13pt; line-height: 1.55; color: var(--navy); }
+  .closing .x { font-family: var(--serif); font-style: italic; font-size: 24pt; color: var(--blush); margin-top: 8mm; }
+  .closing-foot { position: absolute; bottom: 14mm; left: 18mm; right: 18mm; text-align: center; font-family: var(--sans); font-size: 7.5pt; letter-spacing: 0.12em; color: var(--grey); line-height: 1.6; text-transform: none; }
+
+  .page-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10mm; }
+
+  /* SVG illustrations */
+  .ill-stroke { fill: none; stroke: rgba(0, 48, 96, 0.55); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .ill-fill { fill: rgba(0, 48, 96, 0.10); }
+  .ill-blush { fill: rgba(247, 159, 131, 0.55); }
+  .ill-cream { fill: rgba(249, 247, 244, 0.85); stroke: rgba(0,48,96,0.55); stroke-width: 1.6; }
+  .photo-navy .ill-stroke,
+  .photo-warm-bath .ill-stroke,
+  .photo-mushrooms .ill-stroke,
+  .photo-dusk .ill-stroke { stroke: rgba(255, 247, 235, 0.7); }
+  .photo-navy .ill-cream,
+  .photo-warm-bath .ill-cream { fill: rgba(255,247,235,0.15); stroke: rgba(255,247,235,0.7); }
+
+  @media print {
+    body { background: white; padding: 0; }
+    body > * { box-shadow: none !important; margin: 0 !important; }
+    .page { box-shadow: none; page-break-after: always; }
+    .page:last-child { page-break-after: auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ====================== SVG SYMBOL LIBRARY ====================== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- Lemon water glass -->
+    <symbol id="ic-glass" viewBox="0 0 100 100">
+      <path class="ill-stroke" d="M28 18 L36 84 Q36 92 50 92 Q64 92 64 84 L72 18 Z"/>
+      <path class="ill-stroke" d="M30 32 L70 32"/>
+      <ellipse class="ill-blush" cx="62" cy="14" rx="9" ry="6"/>
+      <path class="ill-stroke" d="M53 14 Q62 8 71 14 Q62 20 53 14 Z"/>
+      <line class="ill-stroke" x1="62" y1="14" x2="56" y2="20"/>
+      <circle class="ill-stroke" cx="44" cy="55" r="2"/>
+      <circle class="ill-stroke" cx="52" cy="68" r="1.5"/>
+      <circle class="ill-stroke" cx="56" cy="48" r="1.2"/>
+    </symbol>
+
+    <!-- Eggs + plate -->
+    <symbol id="ic-eggs" viewBox="0 0 100 100">
+      <ellipse class="ill-stroke" cx="50" cy="62" rx="38" ry="10"/>
+      <ellipse class="ill-cream" cx="38" cy="55" rx="14" ry="11"/>
+      <circle class="ill-blush" cx="36" cy="54" r="4"/>
+      <ellipse class="ill-cream" cx="62" cy="58" rx="13" ry="10"/>
+      <circle class="ill-blush" cx="64" cy="57" r="4"/>
+      <path class="ill-stroke" d="M22 42 Q26 36 32 38"/>
+      <path class="ill-stroke" d="M70 40 Q76 35 80 40"/>
+    </symbol>
+
+    <!-- Smoothie -->
+    <symbol id="ic-smoothie" viewBox="0 0 100 100">
+      <path class="ill-stroke" d="M32 22 L36 86 Q36 90 50 90 Q64 90 64 86 L68 22 Z"/>
+      <path class="ill-blush" d="M32 22 L36 70 Q36 74 50 74 Q64 74 64 70 L68 22 Z" opacity="0.5"/>
+      <line class="ill-stroke" x1="56" y1="8" x2="52" y2="36" stroke-width="2"/>
+      <circle class="ill-blush" cx="46" cy="18" r="3"/>
+      <circle class="ill-blush" cx="58" cy="14" r="2"/>
+    </symbol>
+
+    <!-- Shakshuka pan -->
+    <symbol id="ic-pan" viewBox="0 0 100 100">
+      <ellipse class="ill-stroke" cx="50" cy="55" rx="34" ry="20"/>
+      <ellipse class="ill-blush" cx="50" cy="55" rx="30" ry="17" opacity="0.6"/>
+      <line class="ill-stroke" x1="84" y1="55" x2="96" y2="55" stroke-width="3"/>
+      <ellipse class="ill-cream" cx="42" cy="52" rx="6" ry="5"/>
+      <circle class="ill-blush" cx="42" cy="52" r="2"/>
+      <ellipse class="ill-cream" cx="58" cy="58" rx="6" ry="5"/>
+      <circle class="ill-blush" cx="58" cy="58" r="2"/>
+    </symbol>
+
+    <!-- Salad bowl -->
+    <symbol id="ic-bowl" viewBox="0 0 100 100">
+      <path class="ill-stroke" d="M16 50 Q16 78 50 78 Q84 78 84 50 Z"/>
+      <ellipse class="ill-stroke" cx="50" cy="50" rx="34" ry="6"/>
+      <path class="ill-stroke" d="M32 44 Q38 30 46 38"/>
+      <path class="ill-stroke" d="M48 36 Q54 26 62 34"/>
+      <circle class="ill-blush" cx="40" cy="48" r="2.5"/>
+      <circle class="ill-blush" cx="58" cy="48" r="2"/>
+    </symbol>
+
+    <!-- Salmon fillet -->
+    <symbol id="ic-fish" viewBox="0 0 100 100">
+      <path class="ill-stroke" d="M14 50 Q24 28 50 28 Q76 28 86 50 Q76 72 50 72 Q24 72 14 50 Z"/>
+      <path class="ill-stroke" d="M86 50 L96 38 L96 62 Z"/>
+      <circle class="ill-stroke" cx="68" cy="46" r="2"/>
+      <path class="ill-blush" d="M30 50 Q40 42 50 50 Q40 58 30 50 Z" opacity="0.6"/>
+    </symbol>
+
+    <!-- Soup bowl with steam -->
+    <symbol id="ic-soup" viewBox="0 0 100 100">
+      <path class="ill-stroke" d="M14 58 Q14 80 50 80 Q86 80 86 58 Z"/>
+      <ellipse class="ill-stroke" cx="50" cy="58" rx="36" ry="6"/>
+      <path class="ill-stroke" d="M36 22 Q40 28 36 36 Q32 44 36 52" fill="none"/>
+      <path class="ill-stroke" d="M50 18 Q54 24 50 32 Q46 40 50 48"/>
+      <path class="ill-stroke" d="M64 22 Q68 28 64 36 Q60 44 64 52"/>
+    </symbol>
+
+    <!-- Cod / fish on plate -->
+    <symbol id="ic-fish-plate" viewBox="0 0 100 100">
+      <ellipse class="ill-stroke" cx="50" cy="62" rx="40" ry="10"/>
+      <path class="ill-cream" d="M22 58 Q34 48 56 50 Q64 56 56 62 Q34 64 22 60 Z"/>
+      <path class="ill-stroke" d="M56 50 L64 45 L64 65 L56 60"/>
+      <circle class="ill-stroke" cx="32" cy="56" r="1.5"/>
+      <circle class="ill-blush" cx="72" cy="56" r="3"/>
+      <circle class="ill-blush" cx="78" cy="62" r="2"/>
+    </symbol>
+
+    <!-- Mushrooms -->
+    <symbol id="ic-mushroom" viewBox="0 0 100 100">
+      <path class="ill-cream" d="M22 50 Q22 30 50 30 Q78 30 78 50 Z"/>
+      <rect class="ill-cream" x="42" y="50" width="16" height="28" rx="3"/>
+      <circle class="ill-blush" cx="38" cy="42" r="3"/>
+      <circle class="ill-blush" cx="50" cy="38" r="2.5"/>
+      <circle class="ill-blush" cx="62" cy="42" r="3"/>
+    </symbol>
+
+    <!-- Broth bowl -->
+    <symbol id="ic-broth" viewBox="0 0 100 100">
+      <path class="ill-stroke" d="M12 56 Q12 82 50 82 Q88 82 88 56 Z"/>
+      <ellipse class="ill-stroke" cx="50" cy="56" rx="38" ry="6"/>
+      <path class="ill-blush" d="M22 60 Q34 52 50 58 Q66 64 78 60 Q78 70 50 72 Q22 70 22 60 Z" opacity="0.5"/>
+      <path class="ill-stroke" d="M40 24 Q44 30 40 38"/>
+      <path class="ill-stroke" d="M58 22 Q62 28 58 36"/>
+    </symbol>
+
+    <!-- Berries -->
+    <symbol id="ic-berries" viewBox="0 0 100 100">
+      <circle class="ill-blush" cx="34" cy="54" r="11"/>
+      <circle class="ill-blush" cx="56" cy="48" r="13"/>
+      <circle class="ill-blush" cx="66" cy="64" r="10"/>
+      <path class="ill-stroke" d="M30 44 L36 36"/>
+      <path class="ill-stroke" d="M52 38 L58 30"/>
+      <path class="ill-stroke" d="M64 56 L68 48"/>
+      <circle class="ill-stroke" cx="34" cy="54" r="11" fill="none"/>
+      <circle class="ill-stroke" cx="56" cy="48" r="13" fill="none"/>
+      <circle class="ill-stroke" cx="66" cy="64" r="10" fill="none"/>
+    </symbol>
+
+    <!-- Tea cup -->
+    <symbol id="ic-tea" viewBox="0 0 100 100">
+      <path class="ill-stroke" d="M22 44 L26 78 Q26 84 50 84 Q74 84 74 78 L78 44 Z"/>
+      <path class="ill-stroke" d="M76 52 Q88 52 88 64 Q88 76 76 76"/>
+      <ellipse class="ill-stroke" cx="50" cy="44" rx="28" ry="4"/>
+      <path class="ill-stroke" d="M40 18 Q44 24 40 32"/>
+      <path class="ill-stroke" d="M50 14 Q54 22 50 30"/>
+      <path class="ill-stroke" d="M60 18 Q64 24 60 32"/>
+    </symbol>
+
+    <!-- Linen / morning still life -->
+    <symbol id="ic-linen" viewBox="0 0 100 100">
+      <path class="ill-cream" d="M10 70 Q30 60 50 70 Q70 80 90 70 L90 90 L10 90 Z"/>
+      <circle class="ill-blush" cx="68" cy="48" r="6"/>
+      <circle class="ill-stroke" cx="68" cy="48" r="6" fill="none"/>
+      <path class="ill-stroke" d="M30 60 L36 72"/>
+      <path class="ill-stroke" d="M22 50 Q26 40 32 50"/>
+      <line class="ill-stroke" x1="14" y1="78" x2="86" y2="78"/>
+    </symbol>
+
+    <!-- Woman portrait silhouette (author) -->
+    <symbol id="ic-author" viewBox="0 0 100 100">
+      <circle class="ill-cream" cx="50" cy="38" r="18"/>
+      <path class="ill-cream" d="M22 90 Q22 60 50 60 Q78 60 78 90 Z"/>
+      <path class="ill-stroke" d="M34 32 Q42 22 58 24 Q70 28 68 42"/>
+      <circle class="ill-stroke" cx="44" cy="40" r="1.2"/>
+      <circle class="ill-stroke" cx="56" cy="40" r="1.2"/>
+      <path class="ill-stroke" d="M46 50 Q50 53 54 50"/>
+    </symbol>
+
+    <!-- Water pour / pitcher -->
+    <symbol id="ic-pitcher" viewBox="0 0 100 100">
+      <path class="ill-stroke" d="M30 24 L26 80 Q26 86 38 86 Q50 86 50 80 L46 24 Z"/>
+      <path class="ill-stroke" d="M46 30 Q60 28 66 38 Q60 44 50 42"/>
+      <path class="ill-blush" d="M34 36 L30 78 Q30 80 38 80 Q46 80 46 78 L42 36 Z" opacity="0.6"/>
+      <path class="ill-stroke" d="M62 46 Q66 56 64 64 Q60 70 64 78"/>
+      <ellipse class="ill-stroke" cx="64" cy="84" rx="10" ry="2"/>
+    </symbol>
+
+    <!-- Candle / wind down -->
+    <symbol id="ic-candle" viewBox="0 0 100 100">
+      <rect class="ill-cream" x="38" y="40" width="24" height="44" rx="2"/>
+      <path class="ill-blush" d="M50 18 Q44 28 50 36 Q56 28 50 18 Z"/>
+      <line class="ill-stroke" x1="50" y1="36" x2="50" y2="40" stroke-width="2"/>
+      <line class="ill-stroke" x1="38" y1="48" x2="62" y2="48"/>
+    </symbol>
+
+    <!-- Sun rising -->
+    <symbol id="ic-sun" viewBox="0 0 100 100">
+      <line class="ill-stroke" x1="14" y1="68" x2="86" y2="68"/>
+      <circle class="ill-blush" cx="50" cy="68" r="20"/>
+      <circle class="ill-stroke" cx="50" cy="68" r="20" fill="none"/>
+      <line class="ill-stroke" x1="50" y1="20" x2="50" y2="34"/>
+      <line class="ill-stroke" x1="22" y1="34" x2="30" y2="42"/>
+      <line class="ill-stroke" x1="78" y1="34" x2="70" y2="42"/>
+      <line class="ill-stroke" x1="14" y1="56" x2="22" y2="58"/>
+      <line class="ill-stroke" x1="86" y1="56" x2="78" y2="58"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ====================== PAGE 1 — COVER ====================== -->
+<section class="page cover" data-screen-label="01 Cover">
+  <div class="frame">
+    <div class="cover-top">
+      <span class="cover-tag">A Free Guide · The Weight Loss Academy</span>
+    </div>
+
+    <h1 class="cover-title" style="margin-top:auto">
+      The<br/>
+      <span class="b" style="color:#F79F83;">Bloat-Free</span><br/>
+      Day.
+    </h1>
+
+    <p class="cover-sub">
+      Exactly what to eat from morning to night to wake up lighter, less bloated, and more comfortable in your clothes, without cutting everything out.
+    </p>
+
+    <div class="cover-bottom">
+      <div class="wordmark"><span>Weight Loss Academy</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== PAGE 2 — WELCOME ====================== -->
+<section class="page" data-screen-label="02 Welcome">
+  <div class="frame welcome-grid">
+    <div class="welcome-photo photo photo-linen">
+      <div class="photo-icon"><svg viewBox="0 0 100 100"><use href="#ic-linen"/></svg></div>
+    </div>
+    <div class="welcome-text">
+      <h2>This isn't<br/>another <span class="b">diet.</span></h2>
+
+      <p style="margin-top:6mm; font-family:var(--serif); font-style:italic; font-size:13pt; line-height:1.55; color:var(--navy);">
+        If you've ever stood in front of the mirror in the morning, pulled at your waistband, or undone a button by 4pm, this guide is for you.
+      </p>
+
+      <p style="margin-top:5mm;">Bloating is one of the most common things women come to me about. It's also one of the things that shifts the fastest when you change a few small daily habits.</p>
+
+      <p>You don't need to give up bread. You don't need to live on cucumber water. You don't need to start counting anything.</p>
+
+      <p>What you do need is a simple, repeatable rhythm, a way of eating and drinking through the day that lets your body settle, digest, and feel like itself again.</p>
+
+      <p style="margin-top:3mm;"><span class="serif italic" style="color:var(--navy)">That's exactly what's inside.</span> Use this guide for one full day and notice the difference. Most women feel lighter by the next morning.</p>
+
+      <div class="signoff">
+        <div class="who">Anna — The Weight Loss Academy</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer"><span>The Weight Loss Academy</span></div>
+</section>
+
+<!-- ====================== PAGE 3 — AUTHOR ====================== -->
+<section class="page" data-screen-label="03 Author">
+  <div class="frame">
+    <div class="author-hero photo photo-author has-image" style="background-image:url('images/anna-portrait.jpg'); background-size:cover; background-position:center 30%;">
+    </div>
+
+    <div class="author-mid">
+      <h2 style="font-style:italic; margin-top:5mm;">I'm Anna and I built this for the<br/><span class="b">version of you who's tried everything.</span></h2>
+    </div>
+
+    <div class="author-cols">
+      <div>
+        <p>I've spent the last decade helping women lose weight without losing their lives in the process. No 5am workouts you secretly hate. No weighing celery sticks. No starting again on Monday.</p>
+        <p>What I've seen, again and again, is that the women who feel the best aren't the ones doing the most. They're the ones doing the right small things, consistently.</p>
+        <div class="author-quote">"Bloating isn't a moral failing. It's information. Once you learn to read it, your body becomes a much kinder place to live."</div>
+      </div>
+      <div>
+        <p>This guide is one day's worth of those small things. The same daily rhythm I take my one-to-one clients through in their first week of working with me.</p>
+        <p>It's gentle. It's flexible. It's based on real science (no apple cider vinegar shots, promise). And it works.</p>
+        <p style="font-family:var(--serif); font-style:italic; font-size:11pt; color:var(--navy);">Read it once. Try it once. See what shifts.</p>
+
+        <div class="author-creds">
+          <div class="cred" style="font-size:18pt;">ANutr<span>Associate Nutritionist</span></div>
+          <div class="cred" style="font-size:18pt;">BSc<span>Nutrition</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer"><span>The Weight Loss Academy</span></div>
+</section>
+
+<!-- ====================== PAGE 4 — SCIENCE ====================== -->
+<section class="page" data-screen-label="04 Science">
+  <div class="frame">
+    <div class="science-head">
+      <div>
+        <h2 style="margin-top:5mm;">Why we bloat<br/><span class="italic">(and why it's almost</span><br/><span class="b">never serious).</span></h2>
+      </div>
+      <div style="max-width:65mm; font-family:var(--serif); font-style:italic; font-size:11pt; line-height:1.55; color:var(--navy); padding-bottom:4mm;">
+        Bloating is your digestive system telling you something's a bit off, not a sign that something's wrong with you. The most common causes are completely fixable.
+      </div>
+    </div>
+
+    <div class="science-grid">
+      <div class="science-card">
+        <div class="n">01</div>
+        <div>
+          <h4>Eating too quickly</h4>
+          <p>When you eat fast, you swallow air and that air has to go somewhere. Slowing down at meals (and chewing properly) is one of the single most effective bloat fixes there is.</p>
+        </div>
+      </div>
+      <div class="science-card">
+        <div class="n">02</div>
+        <div>
+          <h4>Not enough water</h4>
+          <p>Mild dehydration slows digestion and causes the body to retain water, which paradoxically makes you feel <em>more</em> bloated, not less. A glass of warm lemon water on rising changes this fast.</p>
+        </div>
+      </div>
+      <div class="science-card">
+        <div class="n">03</div>
+        <div>
+          <h4>Too much salt &amp; processed food</h4>
+          <p>Salty foods pull water into your tissues. One takeaway or salty meal can leave you feeling puffy for 24 to 48 hours afterwards.</p>
+        </div>
+      </div>
+      <div class="science-card">
+        <div class="n">04</div>
+        <div>
+          <h4>Eating late or close to bed</h4>
+          <p>Your digestion slows down in the evening. A heavy late meal often shows up as a bloated, uncomfortable morning.</p>
+        </div>
+      </div>
+      <div class="science-card" style="grid-column: 1 / span 2;">
+        <div class="n">05</div>
+        <div>
+          <h4>Hidden food sensitivities</h4>
+          <p>Dairy, certain breads, sugar alcohols (sweeteners), and onions or garlic in large amounts are the most common culprits. We're not cutting them out forever, just for one day, to let your gut settle.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer"><span>The Weight Loss Academy</span></div>
+</section>
+
+<!-- ====================== PAGE 5 — TIMELINE ====================== -->
+<section class="page timeline-page" data-screen-label="05 Timeline">
+  <div class="frame">
+    <h2 style="margin-top:5mm;">The Bloat-Free Day,<br/><span class="b italic">hour by hour.</span></h2>
+    <p style="font-family:var(--serif); font-style:italic; font-size:11pt; color:var(--navy); margin-top:5mm; max-width:140mm;">
+      Here's the rhythm. The next pages have full meal ideas. This is the structure to come back to anytime you need a reset.
+    </p>
+
+    <div class="timeline" style="margin-top:8mm;">
+      <div class="tl-row">
+        <div class="tl-time">On Waking</div>
+        <div class="tl-content" style="grid-column: 1 / -1;">
+          <h4>Warm lemon water</h4>
+          <p>Wakes up your digestion gently, kickstarts bowel movements, rehydrates you after the night. Before coffee. Before anything else.</p>
+        </div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-time">Breakfast</div>
+        <div class="tl-content" style="grid-column: 1 / -1;">
+          <h4>Within 1 hr of waking, a protein-led meal</h4>
+          <p>Skip the pastries today. Eggs (scrambled with avocado on toast), smoked salmon, or a protein-led smoothie. Eating within an hour of waking helps stabilise blood sugar early, which sets the tone for cravings, energy, and snacking for the rest of the day.</p>
+        </div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-time">Mid-Morning</div>
+        <div class="tl-content" style="grid-column: 1 / -1;">
+          <h4>Only if you're genuinely hungry</h4>
+          <p>Most days you won't need anything between breakfast and lunch. If you do, keep it small. Think a piece of fruit or some raw veg. Berries, papaya, pineapple, or cucumber sticks are all naturally de-bloating. Sip water alongside.</p>
+        </div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-time">Lunch</div>
+        <div class="tl-content" style="grid-column: 1 / -1;">
+          <h4>Lean protein with vegetables</h4>
+          <p>Always include a protein element: chicken, fish, eggs, or a vegetarian alternative. A protein-based salad or a vegetable-packed soup with a boiled egg on the side both work beautifully on a bloat-free day.</p>
+        </div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-time">Afternoon</div>
+        <div class="tl-content" style="grid-column: 1 / -1;">
+          <h4>A bigger snack to bridge to dinner</h4>
+          <p>This is the gap that matters. A more substantial snack here prevents the 3pm slump, steadies blood sugar, and stops the biscuit reach later. Think apple slices with nut butter, a small handful of nuts and raisins, 125g Greek yoghurt with fruit, or 2 boiled eggs. Pair with peppermint or fennel tea to keep things calm on the gut.</p>
+        </div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-time">Dinner</div>
+        <div class="tl-content" style="grid-column: 1 / -1;">
+          <h4>Warm, light, simple</h4>
+          <p>Soup, baked fish, or roasted veg with a portion of protein. Aim to finish at least 2 hours before bed. Then a 10-minute walk if you can.</p>
+        </div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-time" style="white-space:nowrap;">Throughout the day</div>
+        <div class="tl-content" style="grid-column: 1 / -1;">
+          <h4>Water, water, water</h4>
+          <p>Aim for around 8 glasses. Add lemon, cucumber, or fresh mint if plain water bores you. One milky coffee is fine — keep the rest as tea or water.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer"><span>The Weight Loss Academy</span></div>
+</section>
+
+<!-- ====================== PAGE 6 — BREAKFAST INTRO ====================== -->
+<section class="page" data-screen-label="06 Breakfast">
+  <div class="frame">
+    <h2 style="font-style:italic;">Breakfast.</h2>
+    <p style="font-family:var(--serif); font-style:italic; font-size:13pt; line-height:1.5; color:var(--navy); margin-top:5mm; max-width:130mm;">
+      Three recipes. Choose one. All protein-led, gentle on digestion, on the table in 10 minutes.
+    </p>
+
+    <div class="recipe-index" style="margin-top:10mm;">
+      <div class="ri-row">
+        <div class="ri-num">No. 01</div>
+        <div class="ri-title">Latte Smoothie</div>
+        <div class="ri-meta">Serves 1 · 5 min</div>
+      </div>
+      <div class="ri-row">
+        <div class="ri-num">No. 02</div>
+        <div class="ri-title">Avocado &amp; Scrambled Egg on Toast</div>
+        <div class="ri-meta">Serves 1 · 10 min</div>
+      </div>
+      <div class="ri-row">
+        <div class="ri-num">No. 03</div>
+        <div class="ri-title">Smoked Salmon &amp; Scrambled Egg Plate</div>
+        <div class="ri-meta">Serves 1 · 10 min</div>
+      </div>
+    </div>
+
+    <p style="font-family:var(--serif); font-style:italic; font-size:11pt; color:var(--grey); margin-top:8mm; max-width:130mm;">
+      A note on coffee: one milky coffee with breakfast is fine. Skip the syrups today, and switch to herbal or decaf after lunch.
+    </p>
+  </div>
+
+  <div class="page-footer"><span>The Weight Loss Academy</span></div>
+</section>
+
+<!-- ====================== PAGE 6a — RECIPE 01: LATTE SMOOTHIE ====================== -->
+<section class="page recipe-page" data-screen-label="06a Latte Smoothie">
+  <div class="recipe-photo photo has-image" style="background-image:url('images/latte-smoothie.jpg');"></div>
+  <div class="frame recipe-frame">
+    <div class="recipe-eyebrow">Breakfast · No. 01</div>
+    <h2 style="font-style:italic; font-size:38pt;">Latte<br/><span style="font-style:normal; font-weight:700;">Smoothie.</span></h2>
+    <div class="recipe-meta">Serves 1 · 5 minutes</div>
+
+    <div class="recipe-cols">
+      <div class="recipe-col">
+        <h4>Ingredients</h4>
+        <ul class="recipe-list">
+          <li>160ml milk of your choice <span class="note">(no added sugar if plant-based)</span></li>
+          <li>3 tbsp oats</li>
+          <li>2 tbsp full-fat Greek yoghurt</li>
+          <li>1 frozen banana</li>
+          <li>1 tsp honey</li>
+          <li>1 heaped tsp coffee</li>
+        </ul>
+      </div>
+
+      <div class="recipe-col">
+        <h4>Instructions</h4>
+        <ol class="recipe-steps">
+          <li>Add everything to a blender and whizz until smooth.</li>
+        </ol>
+
+        <div class="recipe-tip">
+          <div class="tip-label">The Night Before</div>
+          <p>Peel a banana, slice it into chunks, and freeze. Tip: slice up a few at once and keep them in the freezer ready to go.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer"><span>The Weight Loss Academy</span></div>
+</section>
+
+<!-- ====================== PAGE 6b — RECIPE 02: AVOCADO EGG ====================== -->
+<section class="page recipe-page" data-screen-label="06b Avocado &amp; Scrambled Egg">
+  <div class="recipe-photo photo has-image" style="background-image:url('images/avocado-eggs-toast.webp');"></div>
+  <div class="frame recipe-frame">
+    <div class="recipe-eyebrow">Breakfast · No. 02</div>
+    <h2 style="font-style:italic; font-size:34pt;">Avocado &amp;<br/>Scrambled Egg<br/><span style="font-style:normal; font-weight:700;">on Toast.</span></h2>
+    <div class="recipe-meta">Serves 1 · 10 minutes</div>
+
+    <div class="recipe-cols">
+      <div class="recipe-col">
+        <h4>Ingredients</h4>
+        <ul class="recipe-list">
+          <li>2 eggs</li>
+          <li>1 tsp unsalted butter</li>
+          <li>1 slice wholemeal bread</li>
+          <li>½ avocado, mashed or sliced</li>
+          <li>Black pepper, to taste</li>
+          <li>Pinch of chilli flakes <span class="note">(optional)</span></li>
+        </ul>
+      </div>
+
+      <div class="recipe-col">
+        <h4>Instructions</h4>
+        <ol class="recipe-steps">
+          <li>Crack the eggs into a bowl, season with black pepper, and beat lightly.</li>
+          <li>Heat a non-stick pan over medium and add half the butter.</li>
+          <li>Pour in the eggs and stir gently until softly scrambled.</li>
+          <li>Toast the bread and spread with the remaining butter.</li>
+          <li>Top with avocado, then pile the scrambled eggs on top.</li>
+          <li>Finish with extra black pepper and chilli flakes, if using.</li>
+        </ol>
+
+        <div class="recipe-tip">
+          <p style="font-style:italic;">Works with any style of egg — fried, boiled, or poached.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer"><span>The Weight Loss Academy</span></div>
+</section>
+
+<!-- ====================== PAGE 6c — RECIPE 03: SMOKED SALMON ====================== -->
+<section class="page recipe-page" data-screen-label="06c Smoked Salmon &amp; Egg">
+  <div class="recipe-photo photo has-image" style="background-image:url('images/smoked-salmon-eggs.webp');"></div>
+  <div class="frame recipe-frame">
+    <div class="recipe-eyebrow">Breakfast · No. 03</div>
+    <h2 style="font-style:italic; font-size:34pt;">Smoked Salmon<br/>&amp; Scrambled Egg<br/><span style="font-style:normal; font-weight:700;">Plate.</span></h2>
+    <div class="recipe-meta">Serves 1 · 10 minutes</div>
+
+    <div class="recipe-cols">
+      <div class="recipe-col">
+        <h4>Ingredients</h4>
+        <ul class="recipe-list">
+          <li>2 eggs</li>
+          <li>½ tsp Italian herbs</li>
+          <li>½ tbsp butter</li>
+          <li>A handful of baby spinach</li>
+          <li>2 large tomatoes, quartered</li>
+          <li>55g smoked salmon</li>
+          <li>Black pepper, to taste</li>
+          <li>Pinch of chilli flakes <span class="note">(optional)</span></li>
+        </ul>
+      </div>
+
+      <div class="recipe-col">
+        <h4>Instructions</h4>
+        <ol class="recipe-steps">
+          <li>Crack the eggs into a bowl, season with Italian herbs and black pepper, and beat lightly.</li>
+          <li>Heat a non-stick pan over medium and add the butter.</li>
+          <li>Pour in the eggs and stir gently until softly scrambled.</li>
+          <li>In a separate pan, gently wilt the spinach and warm the tomatoes until just softened.</li>
+          <li>Plate the scrambled eggs with the smoked salmon, wilted spinach, and warm tomatoes.</li>
+          <li>Finish with extra black pepper and chilli flakes, if using.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer"><span>The Weight Loss Academy</span></div>
+</section>
+
+<!-- ====================== PAGE 7 — LUNCH ====================== -->
+<section class="page" data-screen-label="07 Lunch">
+  <div class="frame">
+    <h2 style="font-style:italic;">Lunch.</h2>
+    <p style="font-family:var(--serif); font-style:italic; font-size:13pt; line-height:1.5; color:var(--navy); margin-top:5mm; max-width:130mm;">
+      Three recipes. Choose one. Lean protein and gentle vegetables, with options to batch-cook or eat on the go.
+    </p>
+
+    <div class="recipe-index" style="margin-top:10mm;">
+      <div class="ri-row">
+        <div class="ri-num">No. 01</div>
+        <div class="ri-title">Italian Roasted Vegetable Tray</div>
+        <div class="ri-meta">Serves 2 · 40 min</div>
+      </div>
+      <div class="ri-row">
+        <div class="ri-num">No. 02</div>
+        <div class="ri-title">Sheet Pan Green Soup</div>
+        <div class="ri-meta">Serves 3 · 45 min</div>
+      </div>
+      <div class="ri-row">
+        <div class="ri-num">No. 03</div>
+        <div class="ri-title">Ham &amp; Egg Cups</div>
+        <div class="ri-meta">Makes 6 · 30 min</div>
+      </div>
+    </div>
+
+    <p style="font-family:var(--serif); font-style:italic; font-size:11pt; color:var(--grey); margin-top:10mm; max-width:130mm;">
+      A note on portions: lunch is your bigger savoury meal of the day. Always include a clear protein element, it's what keeps the afternoon slump (and biscuit reach) at bay.
+    </p>
+  </div>
+
+  <div class="page-footer"><span>The Weight Loss Academy</span></div>
+</section>
+
+<!-- ====================== PAGE 7a — RECIPE 01: ITALIAN ROASTED VEGETABLE TRAY ====================== -->
+<section class="page recipe-page" data-screen-label="07a Italian Roasted Vegetable Tray">
+  <div class="recipe-photo photo has-image" style="background-image:url('images/italian-roasted-vegetable-salad.jpg');"></div>
+  <div class="frame recipe-frame">
+    <div class="recipe-eyebrow">Lunch · No. 01</div>
+    <h2 style="font-style:italic; font-size:34pt;">Italian Roasted<br/><span style="font-style:normal; font-weight:700;">Vegetable Tray.</span></h2>
+    <div class="recipe-meta">Serves 2 · 40 minutes</div>
+
+    <div class="recipe-cols">
+      <div class="recipe-col">
+        <h4>Ingredients</h4>
+        <ul class="recipe-list">
+          <li>4 chicken or turkey sausages, chopped <span class="note">(or pork, beef, or veggie)</span></li>
+          <li>1 onion, sliced</li>
+          <li>1 red pepper, sliced</li>
+          <li>1 carrot, sliced</li>
+          <li>½ courgette, sliced</li>
+          <li>200g broccoli, cut into small florets</li>
+          <li>2 tbsp green pesto</li>
+          <li>½ tsp garlic powder</li>
+          <li>½ tsp dried oregano or Italian seasoning</li>
+          <li>½ tsp paprika</li>
+          <li>Black pepper, to taste</li>
+          <li>2 handfuls of rocket</li>
+          <li>1 tbsp sunflower seeds</li>
+        </ul>
+      </div>
+
+      <div class="recipe-col">
+        <h4>Instructions</h4>
+        <ol class="recipe-steps">
+          <li>Preheat the oven to 200°C.</li>
+          <li>Place the sausages and vegetables on a large baking tray.</li>
+          <li>Add the pesto, garlic powder, oregano, paprika and black pepper. Toss to coat everything evenly.</li>
+          <li>Roast for 30–35 minutes, turning once, until the sausages are cooked through and the vegetables are golden and tender.</li>
+          <li>Tip onto plates with the rocket leaves and finish with the sunflower seeds.</li>
+        </ol>
+
+        <div class="recipe-tip">
+          <div class="tip-label">Batch Tip</div>
+          <p>Doubles or triples easily. Roasted veg and sausages keep in the fridge for 2–3 days or freeze for up to 2 months. Add the rocket and seeds just before serving so they stay fresh.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer"><span>The Weight Loss Academy</span></div>
+</section>
+
+<!-- ====================== PAGE 7b — RECIPE 02: GREEN SOUP ====================== -->
+<section class="page recipe-page" data-screen-label="07b Sheet Pan Green Soup">
+  <div class="recipe-photo photo has-image" style="background-image:url('images/green-soup.jpg');"></div>
+  <div class="frame recipe-frame">
+    <div class="recipe-eyebrow">Lunch · No. 02</div>
+    <h2 style="font-style:italic; font-size:34pt;">Sheet Pan<br/><span style="font-style:normal; font-weight:700;">Green Soup.</span></h2>
+    <div class="recipe-meta">Serves 3 · 45 minutes</div>
+
+    <div class="recipe-cols">
+      <div class="recipe-col">
+        <h4>Ingredients</h4>
+        <ul class="recipe-list">
+          <li>1 large leek, trimmed, washed, cut into 2.5cm pieces</li>
+          <li>2 small (or 1 large) courgette, chopped</li>
+          <li>1 tbsp olive oil</li>
+          <li>1 tsp garlic powder</li>
+          <li>1 tsp Italian seasoning</li>
+          <li>Black pepper, to taste</li>
+          <li>8 tbsp peas (fresh or frozen)</li>
+          <li>1 low-sodium vegetable stock cube</li>
+          <li>1 tin coconut milk</li>
+          <li>150ml water</li>
+          <li><span class="note">To serve, per portion:</span> 1 tbsp fresh parsley, chopped</li>
+        </ul>
+      </div>
+
+      <div class="recipe-col">
+        <h4>Instructions</h4>
+        <ol class="recipe-steps">
+          <li>Preheat the oven to 200°C.</li>
+          <li>Place the leek and courgette in a casserole dish. Drizzle with olive oil and sprinkle with garlic powder, Italian seasoning and black pepper. Toss to coat.</li>
+          <li>Roast for 25–30 minutes, until the vegetables are fork-tender.</li>
+          <li>Remove from the oven and add the peas, stock cube and coconut milk. Cook for a further 10 minutes.</li>
+          <li>Tip into a blender with the water and blend until smooth (a hand blender works too).</li>
+          <li>Transfer to a saucepan and heat through, adding more water for your preferred consistency.</li>
+          <li>Serve hot, topped with chopped parsley.</li>
+        </ol>
+
+        <div class="recipe-tip">
+          <div class="tip-label">Add Protein</div>
+          <p>Always include a portion of protein with your soup — 125g Greek yoghurt, 1–2 boiled eggs, or any meat, fish or vegetarian alternative. Stir through or serve on the side.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer"><span>The Weight Loss Academy</span></div>
+</section>
+
+<!-- ====================== PAGE 7c — RECIPE 03: HAM & EGG CUPS ====================== -->
+<section class="page recipe-page" data-screen-label="07c Ham &amp; Egg Cups">
+  <div class="recipe-photo photo has-image" style="background-image:url('images/ham-egg-cups.webp');"></div>
+  <div class="frame recipe-frame">
+    <div class="recipe-eyebrow">Lunch · No. 03</div>
+    <h2 style="font-style:italic; font-size:34pt;">Ham &amp;<br/><span style="font-style:normal; font-weight:700;">Egg Cups.</span></h2>
+    <div class="recipe-meta">Makes 6 cups (2–3 per portion) · 30 minutes</div>
+
+    <div class="recipe-cols">
+      <div class="recipe-col">
+        <h4>Ingredients</h4>
+        <ul class="recipe-list">
+          <li>½ tsp olive oil</li>
+          <li>6 slices of ham</li>
+          <li>4 eggs</li>
+          <li>15ml milk of your choice</li>
+          <li>½ spring onion, chopped</li>
+          <li>½ red pepper, finely diced</li>
+          <li>½ tsp oregano</li>
+          <li>Pinch of paprika</li>
+          <li>Black pepper, to taste</li>
+          <li>60g cheese, grated</li>
+        </ul>
+
+        <h4 style="margin-top:6mm;">For the Side Salad</h4>
+        <ul class="recipe-list">
+          <li>A large mix of leaves, tomatoes, cucumber, red onion (whatever you fancy)</li>
+          <li>1 tsp mayonnaise, salad cream or dressing — or 1 tbsp coleslaw</li>
+        </ul>
+      </div>
+
+      <div class="recipe-col">
+        <h4>Instructions</h4>
+        <ol class="recipe-steps">
+          <li>Preheat the oven to 180°C.</li>
+          <li>Lightly grease a 6-hole muffin tray with the olive oil.</li>
+          <li>Cut each slice of ham in half and line each muffin hole with two pieces to form a case.</li>
+          <li>Whisk together the eggs, milk, spring onion, red pepper, oregano, paprika and black pepper.</li>
+          <li>Pour the mixture evenly into the ham-lined cases.</li>
+          <li>Top each cup with grated cheese.</li>
+          <li>Bake for 18–20 minutes, until the egg is set and lightly golden on top.</li>
+          <li>While they bake, build your salad on a plate and dress lightly.</li>
+          <li>Let the cups cool slightly, then serve 2–3 per person with the salad.</li>
+        </ol>
+
+        <div class="recipe-tip">
+          <div class="tip-label">Make Ahead</div>
+          <p>Leftovers keep in an airtight container in the fridge for 2–3 days — eat cold or reheat gently. Chicken or turkey deli slices work in place of ham.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer"><span>The Weight Loss Academy</span></div>
+</section>
+
+<!-- ====================== PAGE 8 — DINNER ====================== -->
+<section class="page" data-screen-label="08 Dinner">
+  <div class="frame">
+    <h2 style="font-style:italic;">Dinner.</h2>
+    <p style="font-family:var(--serif); font-style:italic; font-size:11pt; color:var(--navy); margin-top:5mm; max-width:130mm;">
+      Choose one. Low carb, eaten earlier in the evening, ideally finished at least two hours before bed.
+    </p>
+
+    <div style="margin-top:8mm;">
+      <div class="meal-row">
+        <div class="meal-photo photo"></div>
+        <div class="meal-text">
+          <div class="meal-eyebrow">No. 01</div>
+          <h3>One-Pan Baked Cod &amp; Vegetables</h3>
+          <p>Cod, courgette, cherry tomatoes, and a few small new potatoes, all roasted on one tray with olive oil, garlic and lemon. Easy, light, and ready in 25 minutes.</p>
+          <div class="meal-meta"><span>25 min</span><span>Low carb</span><span>One pan</span></div>
+        </div>
+      </div>
+
+      <div class="meal-row">
+        <div class="meal-photo photo"></div>
+        <div class="meal-text">
+          <div class="meal-eyebrow">No. 02</div>
+          <h3>Chicken &amp; Vegetable Broth Bowl</h3>
+          <p>Shredded chicken in a clear broth with pak choi, ginger, and a squeeze of lime. Warming, hydrating, and incredibly gentle on the stomach, perfect for an evening reset.</p>
+          <div class="meal-meta"><span>20 min</span><span>Low carb</span><span>Gut-soothing</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer"><span>The Weight Loss Academy</span></div>
+</section>
+
+<!-- ====================== PAGE 8 — FOOD LIST ====================== -->
+<section class="page" data-screen-label="08 Food List">
+  <div class="frame">
+    <h2 style="margin-top:5mm;">What to lean into.<br/><span class="italic">What to leave for</span> <span class="b">tomorrow.</span></h2>
+    <p style="font-family:var(--serif); font-style:italic; font-size:11pt; color:var(--navy); max-width:140mm; margin-top:5mm;">
+      This isn't a forever list. It's a one-day list, a soft reset for your gut. Tomorrow, normal life resumes.
+    </p>
+
+    <div class="foodlist-grid">
+      <div class="fl-card">
+        <span class="label">Lean Into Today</span>
+        <ul class="dot-list">
+          <li>Eggs, chicken, salmon, white fish, turkey</li>
+          <li>Plain Greek yoghurt (full-fat), small amounts of cheese</li>
+          <li>Berries, pineapple, papaya, kiwi, half a banana</li>
+          <li>Cooked spinach, courgette, carrots, pak choi, peppers</li>
+          <li>Cucumber, cooked tomatoes</li>
+          <li>Sourdough, oats, small portions of sweet potato or rice</li>
+          <li>Well-cooked lentils (in soup or curry)</li>
+          <li>Olive oil, avocado, almonds, chia seeds</li>
+          <li>Ginger, peppermint, fennel, lemon</li>
+          <li>Water, herbal teas, one milky coffee, plain tea</li>
+        </ul>
+      </div>
+
+      <div class="fl-card fl-card--leave">
+        <span class="label">Leave for Tomorrow</span>
+        <ul class="dot-list dot-list--cross">
+          <li>Fizzy drinks (yes, including the diet ones)</li>
+          <li>Chewing gum and mints with sweeteners</li>
+          <li>Heavy bread, pastries, croissants</li>
+          <li>Raw onions, raw garlic, raw cruciferous veg (broccoli, cauliflower, cabbage)</li>
+          <li>Raw tomatoes if they don't sit well with you</li>
+          <li>Beans, chickpeas (lentils excepted, see above)</li>
+          <li>Crisps, salty snacks, takeaways</li>
+          <li>Alcohol</li>
+          <li>Anything you already know doesn't agree with you</li>
+        </ul>
+      </div>
+    </div>
+
+    <p style="margin-top:8mm; font-family:var(--serif); font-style:italic; font-size:10pt; color:var(--grey); text-align:center;">
+      Cruciferous veg are fine well-cooked, it's raw that tends to bloat. If a food makes the "leave for tomorrow" list, it doesn't mean it's bad. It just means we're giving your gut one quiet day.
+    </p>
+  </div>
+
+  <div class="page-footer"><span>The Weight Loss Academy</span></div>
+</section>
+
+<!-- ====================== PAGE 9 — HYDRATION ====================== -->
+<section class="page hydration-page" data-screen-label="09 Hydration">
+  <div class="frame hydra-grid">
+    <div style="display:flex; flex-direction:column;">
+      <h2 style="margin-top:5mm;">The single biggest<br/><span class="italic" style="color:var(--blush)">difference-</span><br/><span class="b" style="color:var(--blush)">maker.</span></h2>
+
+      <p style="font-family:var(--serif); font-style:italic; font-size:12pt; color:var(--cream); margin-top:5mm; line-height:1.5;">
+        If you only do one thing from this guide today, drink more water. Most women are walking around mildly dehydrated, and the body's response is to hold on to the water it does have.
+      </p>
+      <p style="margin-top:3mm;">That's the puffy, heavy feeling we mistake for "weight gain overnight."</p>
+
+      <div class="hydra-stat">
+        <div class="big">2<span class="u">L</span></div>
+        <span class="lbl">Today's target, at least</span>
+        <p style="margin-top:3mm; font-size:9.5pt;">Roughly 8 glasses through the day, one on rising, one with each meal, and one between each meal.</p>
+      </div>
+
+      <div class="photo photo-water-pour" style="margin-top:6mm; height:38mm; border:1px solid rgba(247,159,131,0.4);">
+        <div class="photo-icon"><svg viewBox="0 0 100 100"><use href="#ic-pitcher"/></svg></div>
+      </div>
+    </div>
+
+    <div class="hydra-tips">
+      <div style="font-family:var(--sans); font-size:8.5pt; letter-spacing:0.24em; text-transform:uppercase; color:var(--blush); font-weight:700; margin-bottom:2mm;">Easy upgrades</div>
+
+      <div class="hydra-tip"><div class="num">01</div><div><h4>Warm lemon water on rising</h4><p>Hydrates after sleep, kickstarts digestion, and sets the tone for the whole day.</p></div></div>
+      <div class="hydra-tip"><div class="num">02</div><div><h4>A glass before every meal</h4><p>Helps you eat more slowly, which alone reduces bloating significantly.</p></div></div>
+      <div class="hydra-tip"><div class="num">03</div><div><h4>Peppermint or fennel tea after lunch</h4><p>Calms the gut, eases trapped wind, and curbs the afternoon biscuit reflex.</p></div></div>
+      <div class="hydra-tip"><div class="num">04</div><div><h4>Cut caffeine after midday</h4><p>Caffeine is a diuretic, it pulls water out. Switch to herbal or decaf in the afternoon.</p></div></div>
+      <div class="hydra-tip"><div class="num">05</div><div><h4>Stop drinking 90 minutes before bed</h4><p>So you sleep through, undisturbed.</p></div></div>
+    </div>
+  </div>
+
+  <div class="page-footer"><span>The Weight Loss Academy</span></div>
+</section>
+
+<!-- ====================== PAGE 10 — SHOPPING LIST ====================== -->
+<section class="page" data-screen-label="10 Shopping List">
+  <div class="frame">
+    <h2 style="margin-top:5mm;">Your one-day<br/><span class="b">shopping list.</span></h2>
+
+    <p style="font-family:var(--serif); font-style:italic; font-size:11pt; color:var(--navy); max-width:140mm; margin-top:5mm; margin-bottom:6mm;">
+      Built from the meal ideas on the previous pages, enough for one full Bloat-Free Day, with a little flexibility. Pick the breakfast, lunch and dinner you fancy, then tick off what you already have at home. Adjust quantities to taste.
+    </p>
+
+    <div class="shop-grid">
+      <div class="shop-col">
+        <h4>Protein</h4>
+        <ul class="check-list">
+          <li><span class="box"></span>6 large eggs</li>
+          <li><span class="box"></span>Smoked salmon, 100g</li>
+          <li><span class="box"></span>Salmon fillet, 1</li>
+          <li><span class="box"></span>Cod fillet, 1</li>
+          <li><span class="box"></span>Chicken breasts, 2</li>
+          <li><span class="box"></span>Plain Greek yoghurt, small tub</li>
+          <li><span class="box"></span>Goats cheese, small log</li>
+        </ul>
+        <h4 style="margin-top:6mm;">Pantry &amp; Seasoning</h4>
+        <ul class="check-list">
+          <li><span class="box"></span>Olive oil</li>
+          <li><span class="box"></span>Sea salt &amp; pepper</li>
+          <li><span class="box"></span>Vanilla protein powder</li>
+          <li><span class="box"></span>Chia seeds</li>
+          <li><span class="box"></span>Almonds, small bag</li>
+          <li><span class="box"></span>Sourdough loaf</li>
+        </ul>
+      </div>
+      <div class="shop-col">
+        <h4>Fresh Produce</h4>
+        <ul class="check-list">
+          <li><span class="box"></span>Spinach, large bag</li>
+          <li><span class="box"></span>Mushrooms, 200g</li>
+          <li><span class="box"></span>Avocado, 1</li>
+          <li><span class="box"></span>Mixed salad leaves</li>
+          <li><span class="box"></span>Courgette, 2</li>
+          <li><span class="box"></span>Carrots, 3</li>
+          <li><span class="box"></span>Cherry tomatoes</li>
+          <li><span class="box"></span>Pak choi, 2 heads</li>
+          <li><span class="box"></span>Cucumber, 1</li>
+          <li><span class="box"></span>New potatoes, small bag</li>
+          <li><span class="box"></span>Sweet potato, 1 small</li>
+        </ul>
+      </div>
+      <div class="shop-col">
+        <h4>Aromatics &amp; Fruit</h4>
+        <ul class="check-list">
+          <li><span class="box"></span>Fresh ginger, thumb-size</li>
+          <li><span class="box"></span>Lemons, 2</li>
+          <li><span class="box"></span>Limes, 1</li>
+          <li><span class="box"></span>Garlic, 1 bulb</li>
+          <li><span class="box"></span>Banana, 1</li>
+          <li><span class="box"></span>Berries (any), 1 punnet</li>
+          <li><span class="box"></span>Pineapple (frozen ok)</li>
+        </ul>
+        <h4 style="margin-top:6mm;">Drinks</h4>
+        <ul class="check-list">
+          <li><span class="box"></span>Peppermint tea</li>
+          <li><span class="box"></span>Fennel tea</li>
+          <li><span class="box"></span>Decaf coffee</li>
+          <li><span class="box"></span>Dairy-free milk (oat or almond)</li>
+          <li><span class="box"></span>Sparkling water (tomorrow!)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer"><span>The Weight Loss Academy</span></div>
+</section>
+
+<!-- ====================== PAGE 11 — WIND DOWN ====================== -->
+<section class="page wd-page" data-screen-label="11 Wind Down">
+  <div class="frame wd-grid">
+    <div class="wd-photo photo photo-warm-bath">
+      <div class="photo-icon"><svg viewBox="0 0 100 100"><use href="#ic-candle"/></svg></div>
+      <div class="photo-caption">An earlier evening · a calmer morning</div>
+    </div>
+    <div class="wd-text" style="display:flex; flex-direction:column;">
+      <h2 style="margin-top:5mm;">Your before-bed<br/><span class="b">ritual.</span></h2>
+      <p style="font-family:var(--serif); font-style:italic; font-size:11pt; color:var(--navy); margin-top:5mm;">
+        How you end the day matters as much as how you start it. A calm evening means a calm gut tomorrow.
+      </p>
+
+      <div style="margin-top:5mm; flex:1;">
+        <div class="wd-step"><div class="time">−2h</div><div><h4>Finish dinner</h4><p>At least two hours before bed. Your digestion slows down dramatically once you're horizontal.</p></div></div>
+        <div class="wd-step"><div class="time">−90m</div><div><h4>10-minute walk</h4><p>Gentle movement after dinner is the single best thing you can do for digestion. Around the block is plenty.</p></div></div>
+        <div class="wd-step"><div class="time">−60m</div><div><h4>Last sip of water</h4><p>Stop drinking now, so you sleep through undisturbed.</p></div></div>
+        <div class="wd-step"><div class="time">−45m</div><div><h4>Peppermint or chamomile tea</h4><p>If you're still craving sweetness, this usually settles it. Both are gut-soothing.</p></div></div>
+        <div class="wd-step"><div class="time">−15m</div><div><h4>Phone away. Lights low.</h4><p>Cortisol drops, melatonin rises, gut repairs overnight. The unsexy science of feeling lighter tomorrow.</p></div></div>
+        <div class="wd-step"><div class="time">00</div><div><h4>Sleep, earlier than you think</h4><p>Most women find 7.5–8 hours dramatically reduces morning bloat. Sleep is digestion's rest day.</p></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer"><span>The Weight Loss Academy</span></div>
+</section>
+
+<!-- ====================== PAGE 12 — CHEAT SHEET ====================== -->
+<section class="page" data-screen-label="12 Cheat Sheet">
+  <div class="frame">
+    <h2 style="font-style:italic;">The Bloat-Free Day<br/><span class="b">cheat sheet.</span></h2>
+    <p style="font-family:var(--serif); font-style:italic; font-size:11pt; color:var(--navy); margin-top:5mm; max-width:130mm;">
+      Eight simple rules. Pin it to the fridge. The whole guide on one page.
+    </p>
+
+    <div class="cheat-grid">
+      <div class="cheat-card"><div class="n">01</div><div><h4>Warm lemon water first thing</h4><p>Before coffee. Before anything else.</p></div></div>
+      <div class="cheat-card"><div class="n">02</div><div><h4>Eat slowly</h4><p>Put your fork down between bites. Aim for 20 minutes per meal.</p></div></div>
+      <div class="cheat-card"><div class="n">03</div><div><h4>Protein at every meal</h4><p>Steadier blood sugar. Less bloating. Fewer cravings.</p></div></div>
+      <div class="cheat-card"><div class="n">04</div><div><h4>Cooked beats raw today</h4><p>Easier on the gut. Save big raw salads for another day.</p></div></div>
+      <div class="cheat-card"><div class="n">05</div><div><h4>At least 2 litres of water</h4><p>Spread through the day, not all at once.</p></div></div>
+      <div class="cheat-card"><div class="n">06</div><div><h4>Skip the fizz</h4><p>Including sparkling water and diet drinks for today.</p></div></div>
+      <div class="cheat-card"><div class="n">07</div><div><h4>Finish dinner early</h4><p>At least two hours before bed if you can.</p></div></div>
+      <div class="cheat-card"><div class="n">08</div><div><h4>A 10-minute walk after meals</h4><p>Especially after dinner. Movement helps everything move.</p></div></div>
+    </div>
+
+    <div class="cheat-foot">“Small things, repeated, become a different body.”</div>
+  </div>
+
+  <div class="page-footer"><span>The Weight Loss Academy</span></div>
+</section>
+
+<!-- ====================== PAGE 13 — MORNING AFTER ====================== -->
+<section class="page" data-screen-label="13 Morning After">
+  <div class="frame">
+    <h2 style="margin-top:5mm;">What you'll likely notice<br/><span class="b">tomorrow.</span></h2>
+
+    <div class="ma-grid" style="margin-top:6mm;">
+      <div class="ma-photo photo photo-window-light">
+        <div class="photo-icon"><svg viewBox="0 0 100 100"><use href="#ic-sun"/></svg></div>
+        <div class="photo-caption">A lighter morning</div>
+      </div>
+
+      <div>
+        <p style="font-family:var(--serif); font-style:italic; font-size:11pt; color:var(--navy);">
+          Most women who follow this for one full day wake up feeling noticeably lighter. Here's what to look out for, and what to do with it.
+        </p>
+
+        <div class="ma-list" style="margin-top:5mm;">
+          <div class="ma-item"><h4>A flatter, calmer tummy</h4><p>The most common one. Your body has had a chance to release the water it was holding on to.</p></div>
+          <div class="ma-item"><h4>Better sleep</h4><p>An earlier, lighter dinner usually means deeper sleep, which itself reduces inflammation and bloating.</p></div>
+          <div class="ma-item"><h4>Steadier energy</h4><p>No 11am dip. No 3pm crash. This is what eating in rhythm with your body actually feels like.</p></div>
+          <div class="ma-item"><h4>Less appetite for sugar</h4><p>Protein-led meals quietly rebalance your hunger signals. Most women notice this on day two.</p></div>
+        </div>
+
+        <div class="ma-truth">
+          The honest truth: one bloat-free day will give you a lovely morning. It won't change your body long-term on its own. To actually drop a dress size and feel back in control around food, you need a real system, that's what the 21 Day Reset is built for. Find it at <span style="font-weight:700;">join.wearewla.com/21-day-reset</span>.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer"><span>The Weight Loss Academy</span></div>
+</section>
+
+<script>
+/* Auto-number every page footer with a sequential page number (bottom-right). */
+(function () {
+  const pages = document.querySelectorAll('section.page');
+  pages.forEach(function (page, i) {
+    let footer = page.querySelector('.page-footer');
+    if (!footer) {
+      footer = document.createElement('div');
+      footer.className = 'page-footer';
+      footer.innerHTML = '<span></span>';
+      page.appendChild(footer);
+    }
+    // ensure there's a left span (brand wordmark) and a right page-number span
+    if (!footer.querySelector('.pf-num')) {
+      const num = document.createElement('span');
+      num.className = 'pf-num';
+      footer.appendChild(num);
+    }
+    footer.querySelector('.pf-num').textContent = String(i + 1);
+  });
+})();
+</script>
+
+<script>
+/* Convert every .photo block into a labelled placeholder.
+   Reads any existing .photo-caption text to use as the descriptor,
+   strips the AI illustrations, and stamps a clean "image goes here" mark. */
+(function () {
+  const ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1.5"/><circle cx="9" cy="10" r="1.6"/><path d="M3 17l5-5 4 4 3-3 6 6"/></svg>';
+
+  document.querySelectorAll('.photo').forEach(function (el) {
+    // grab existing caption text if present, then remove it
+    let desc = '';
+    const cap = el.querySelector('.photo-caption');
+    if (cap) { desc = cap.textContent.trim(); cap.remove(); }
+    const corner = el.querySelector('.photo-corner');
+    let cornerText = corner ? corner.textContent.trim() : '';
+
+    // strip everything else
+    el.querySelectorAll('.photo-icon, svg').forEach(function (n) { n.remove(); });
+
+    // re-add corner mark if it existed
+    if (cornerText) {
+      const c = document.createElement('div');
+      c.className = 'photo-corner';
+      c.textContent = cornerText;
+      el.appendChild(c);
+    }
+
+    // build placeholder
+    const ph = document.createElement('div');
+    ph.className = 'photo-placeholder';
+    ph.innerHTML = ICON +
+      '<div class="ph-label">Image</div>' +
+      (desc ? '<div class="ph-desc">' + desc + '</div>' : '');
+    el.appendChild(ph);
+  });
+})();
+</script>
+
+</body>
+</html>
