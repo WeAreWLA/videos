@@ -10,9 +10,9 @@ export const colors = {
 export const recipes = [
   { src: "recipes/granola-bowl.jpg", label: "Berry Granola Bowl" },
   { src: "recipes/overnight-oats.jpg", label: "Mango Overnight Oats" },
-  { src: "recipes/burger.jpg", label: "Bean Burger" },
+  { src: "recipes/burger.jpg", label: "Falafel Burger" },
   { src: "recipes/pasta.jpg", label: "Chicken & Broccoli Pasta" },
-  { src: "recipes/meatballs.jpg", label: "Tomato Meatballs" },
+  { src: "recipes/meatballs.jpg", label: "Marry Me Meatballs" },
 ];
 
 export const portraits = {

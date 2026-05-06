@@ -74,7 +74,7 @@ export const Founder: React.FC = () => {
         >
           Feel like
           <br />
-          <span style={{ fontStyle: "italic", fontWeight: 400 }}>you</span> again —
+          <span style={{ fontStyle: "italic", fontWeight: 400 }}>you</span> again
           <br />
           in 21 days.
         </div>
