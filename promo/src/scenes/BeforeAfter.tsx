@@ -110,27 +110,18 @@ export const BeforeAfter: React.FC = () => {
         <div
           style={{
             fontFamily: alegreya,
-            color: colors.blush,
-            fontSize: 32,
-            fontWeight: 600,
-            letterSpacing: 10,
-            textTransform: "uppercase",
-            marginBottom: 14,
-          }}
-        >
-          Real women · Real results
-        </div>
-        <div
-          style={{
-            fontFamily: baskerville,
             color: colors.cream,
-            fontSize: 78,
+            fontSize: 56,
             fontWeight: 700,
-            lineHeight: 1.05,
-            textShadow: "0 2px 30px rgba(0,0,0,0.4)",
+            letterSpacing: 6,
+            textTransform: "uppercase",
+            textShadow: "0 2px 30px rgba(0,0,0,0.5)",
+            lineHeight: 1.15,
           }}
         >
-          Imagine yours.
+          Real Women.
+          <br />
+          Real Results.
         </div>
       </div>
 
