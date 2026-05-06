@@ -18,6 +18,11 @@ const items = [
   "Have steady energy that actually lasts all day",
 ];
 
+const stats = [
+  { value: "10 yrs", label: "Clinical practice" },
+  { value: "4.9 ★", label: "Member rating" },
+];
+
 const Bullet: React.FC<{
   index: number;
   text: string;
@@ -74,6 +79,60 @@ const Bullet: React.FC<{
   );
 };
 
+const StatTile: React.FC<{
+  index: number;
+  value: string;
+  label: string;
+  baseDelay: number;
+}> = ({ index, value, label, baseDelay }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+
+  const delay = baseDelay + index * 14;
+  const enter = spring({
+    frame: frame - delay,
+    fps,
+    config: { damping: 18, mass: 0.6 },
+  });
+  const y = interpolate(enter, [0, 1], [30, 0]);
+
+  return (
+    <div
+      style={{
+        flex: 1,
+        opacity: enter,
+        transform: `translateY(${y}px)`,
+        textAlign: "center",
+      }}
+    >
+      <div
+        style={{
+          fontFamily: baskerville,
+          color: colors.navy,
+          fontSize: 96,
+          fontWeight: 700,
+          lineHeight: 1,
+        }}
+      >
+        {value}
+      </div>
+      <div
+        style={{
+          fontFamily: alegreya,
+          color: colors.blushDeep,
+          fontSize: 24,
+          fontWeight: 500,
+          letterSpacing: 6,
+          textTransform: "uppercase",
+          marginTop: 14,
+        }}
+      >
+        {label}
+      </div>
+    </div>
+  );
+};
+
 export const Combined: React.FC = () => {
   const frame = useCurrentFrame();
   const { durationInFrames } = useVideoConfig();
@@ -89,6 +148,10 @@ export const Combined: React.FC = () => {
 
   const imgScale = interpolate(frame, [0, durationInFrames], [1.0, 1.12]);
   const imgOpacity = interpolate(frame, [0, 20], [0, 0.32], { extrapolateRight: "clamp" });
+
+  const dividerW = interpolate(frame, [170, 200], [0, 240], {
+    extrapolateRight: "clamp",
+  });
 
   return (
     <AbsoluteFill style={{ background: colors.cream, opacity: exitOpacity }}>
@@ -118,7 +181,7 @@ export const Combined: React.FC = () => {
           style={{
             opacity: headIn,
             transform: `translateY(${headY}px)`,
-            marginBottom: 80,
+            marginBottom: 56,
           }}
         >
           <div
@@ -163,13 +226,32 @@ export const Combined: React.FC = () => {
           style={{
             display: "flex",
             flexDirection: "column",
-            gap: 38,
-            flex: 1,
-            justifyContent: "flex-start",
+            gap: 30,
           }}
         >
           {items.map((t, i) => (
             <Bullet key={t} index={i} text={t} baseDelay={28} />
+          ))}
+        </div>
+
+        <div
+          style={{
+            width: dividerW,
+            height: 2,
+            background: colors.blushDeep,
+            margin: "44px auto 30px",
+          }}
+        />
+
+        <div style={{ display: "flex", gap: 60, justifyContent: "center" }}>
+          {stats.map((s, i) => (
+            <StatTile
+              key={s.value}
+              index={i}
+              value={s.value}
+              label={s.label}
+              baseDelay={200}
+            />
           ))}
         </div>
       </AbsoluteFill>
