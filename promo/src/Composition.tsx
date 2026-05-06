@@ -6,7 +6,6 @@ import { Founder } from "./scenes/Founder";
 import { Recipes } from "./scenes/Recipes";
 import { Combined } from "./scenes/Combined";
 import { BeforeAfter } from "./scenes/BeforeAfter";
-import { Testimonial } from "./scenes/Testimonial";
 import { CTA } from "./scenes/CTA";
 
 export const SCENE_DURATIONS = {
@@ -14,9 +13,8 @@ export const SCENE_DURATIONS = {
   founder: 120, // 3-7s
   recipes: 210, // 7-14s
   combined: 240, // 14-22s — Benefits + Stats merged
-  beforeAfter: 165, // 22-27.5s — 4 transformations
-  testimonial: 120, // 27.5-31.5s — Ruth's quote
-  cta: 165, // 31.5-37s — extended hold on CTA
+  beforeAfter: 180, // 22-28s — 4 transformations
+  cta: 195, // 28-34.5s — long hold on CTA
 };
 
 export const TOTAL_DURATION = Object.values(SCENE_DURATIONS).reduce(
@@ -42,9 +40,6 @@ export const Promo: React.FC = () => {
         </Series.Sequence>
         <Series.Sequence durationInFrames={SCENE_DURATIONS.beforeAfter}>
           <BeforeAfter />
-        </Series.Sequence>
-        <Series.Sequence durationInFrames={SCENE_DURATIONS.testimonial}>
-          <Testimonial />
         </Series.Sequence>
         <Series.Sequence durationInFrames={SCENE_DURATIONS.cta}>
           <CTA />

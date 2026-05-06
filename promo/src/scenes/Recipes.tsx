@@ -150,7 +150,7 @@ export const Recipes: React.FC = () => {
             lineHeight: 1.05,
           }}
         >
-          60+ recipes.
+          30+ recipes.
         </div>
         <div
           style={{

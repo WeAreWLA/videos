@@ -76,19 +76,6 @@ export const CTA: React.FC = () => {
         >
           <div
             style={{
-              fontFamily: alegreya,
-              color: colors.blush,
-              fontSize: 34,
-              fontWeight: 600,
-              letterSpacing: 8,
-              textTransform: "uppercase",
-              marginBottom: 28,
-            }}
-          >
-            Early bird · £80 off
-          </div>
-          <div
-            style={{
               fontFamily: baskerville,
               color: colors.cream,
               fontSize: 154,
@@ -116,18 +103,18 @@ export const CTA: React.FC = () => {
           style={{
             fontFamily: alegreya,
             color: colors.cream,
-            fontSize: 34,
-            fontWeight: 500,
+            fontSize: 46,
+            fontWeight: 600,
             opacity: sub,
             textAlign: "center",
             letterSpacing: 1,
-            maxWidth: 820,
-            lineHeight: 1.4,
+            maxWidth: 880,
+            lineHeight: 1.35,
           }}
         >
           Regular £97 · Now £17
           <br />
-          Pre-week Monday 4 May
+          Kickoff Monday 11 May
         </div>
 
         <div
