@@ -23,8 +23,8 @@ export const portraits = {
 };
 
 export const transformations = [
-  "testimonials/transformation-1.jpg",
-  "testimonials/transformation-2.jpg",
-  "testimonials/transformation-3.jpg",
-  "testimonials/transformation-4.jpg",
+  "testimonials/transformation-1.png",
+  "testimonials/transformation-2.png",
+  "testimonials/transformation-3.png",
+  "testimonials/transformation-4.png",
 ];
