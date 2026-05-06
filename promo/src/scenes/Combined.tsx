@@ -265,7 +265,7 @@ const FounderTag: React.FC = () => {
   const { fps } = useVideoConfig();
 
   const enter = spring({
-    frame: frame - 160,
+    frame: frame - 130,
     fps,
     config: { damping: 22, mass: 0.7 },
   });
@@ -286,8 +286,8 @@ const FounderTag: React.FC = () => {
     >
       <div
         style={{
-          width: 180,
-          height: 180,
+          width: 220,
+          height: 220,
           borderRadius: "50%",
           overflow: "hidden",
           border: `3px solid ${colors.blushDeep}`,
