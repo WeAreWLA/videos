@@ -31,11 +31,11 @@ const RecipeCard: React.FC<{
   });
 
   const positions = [
-    { top: 600, left: 70, w: 440, h: 400, rot: -3 },
-    { top: 580, left: 570, w: 440, h: 400, rot: 4 },
-    { top: 1020, left: 70, w: 440, h: 400, rot: 3 },
-    { top: 1000, left: 570, w: 440, h: 400, rot: -2 },
-    { top: 1450, left: 290, w: 500, h: 430, rot: 1 },
+    { top: 700, left: 70, w: 440, h: 380, rot: -3 },
+    { top: 680, left: 570, w: 440, h: 380, rot: 4 },
+    { top: 1100, left: 70, w: 440, h: 380, rot: 3 },
+    { top: 1080, left: 570, w: 440, h: 380, rot: -2 },
+    { top: 1500, left: 290, w: 500, h: 400, rot: 1 },
   ];
 
   const p = positions[index];
@@ -157,7 +157,7 @@ export const Recipes: React.FC = () => {
             display: "flex",
             justifyContent: "space-between",
             marginTop: 32,
-            padding: "0 20px",
+            padding: "0 8px",
           }}
         >
           {[
@@ -170,7 +170,7 @@ export const Recipes: React.FC = () => {
                 style={{
                   fontFamily: baskerville,
                   color: colors.blushDeep,
-                  fontSize: 26,
+                  fontSize: 44,
                   fontWeight: 700,
                   letterSpacing: 2,
                 }}
@@ -181,10 +181,10 @@ export const Recipes: React.FC = () => {
                 style={{
                   fontFamily: baskerville,
                   color: colors.navy,
-                  fontSize: 30,
+                  fontSize: 50,
                   fontWeight: 700,
-                  marginTop: 6,
-                  lineHeight: 1.1,
+                  marginTop: 8,
+                  lineHeight: 1.05,
                 }}
               >
                 {name}
@@ -193,10 +193,11 @@ export const Recipes: React.FC = () => {
                 style={{
                   fontFamily: alegreya,
                   color: colors.ink,
-                  fontSize: 18,
+                  fontSize: 26,
                   fontWeight: 500,
                   letterSpacing: 0.5,
-                  marginTop: 4,
+                  marginTop: 8,
+                  lineHeight: 1.2,
                 }}
               >
                 {tag}

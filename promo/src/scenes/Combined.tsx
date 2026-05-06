@@ -53,10 +53,10 @@ const Bullet: React.FC<{
         style={{
           fontFamily: baskerville,
           color: colors.blushDeep,
-          fontSize: 48,
+          fontSize: 64,
           fontWeight: 700,
           lineHeight: 1,
-          minWidth: 70,
+          minWidth: 90,
           paddingTop: 4,
         }}
       >
@@ -66,11 +66,11 @@ const Bullet: React.FC<{
         style={{
           fontFamily: alegreya,
           color: colors.navy,
-          fontSize: 32,
+          fontSize: 40,
           fontWeight: 500,
-          lineHeight: 1.3,
+          lineHeight: 1.25,
           maxWidth: 820,
-          paddingTop: 6,
+          paddingTop: 8,
         }}
       >
         {text}
