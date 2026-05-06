@@ -9,7 +9,6 @@ import {
 import { colors, portraits } from "../lib/brand";
 import { baskerville, alegreya } from "../lib/fonts";
 import { SafeImg } from "../lib/SafeImg";
-
 const items = [
   "Drop a dress size and start seeing real changes",
   "Lose up to a stone without extreme dieting",
@@ -254,7 +253,87 @@ export const Combined: React.FC = () => {
             />
           ))}
         </div>
+
+        <FounderTag />
       </AbsoluteFill>
     </AbsoluteFill>
+  );
+};
+
+const FounderTag: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+
+  const enter = spring({
+    frame: frame - 160,
+    fps,
+    config: { damping: 22, mass: 0.7 },
+  });
+  const y = interpolate(enter, [0, 1], [20, 0]);
+
+  return (
+    <div
+      style={{
+        marginTop: "auto",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: 24,
+        opacity: enter,
+        transform: `translateY(${y}px)`,
+        paddingTop: 40,
+      }}
+    >
+      <div
+        style={{
+          width: 180,
+          height: 180,
+          borderRadius: "50%",
+          overflow: "hidden",
+          border: `3px solid ${colors.blushDeep}`,
+          flexShrink: 0,
+        }}
+      >
+        <SafeImg
+          src={portraits.laptop}
+          label="Anna"
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: "70% 30%",
+          }}
+        />
+      </div>
+      <div>
+        <div
+          style={{
+            fontFamily: baskerville,
+            color: colors.navy,
+            fontSize: 50,
+            fontWeight: 700,
+            lineHeight: 1,
+          }}
+        >
+          Anna Wallace
+        </div>
+        <div
+          style={{
+            fontFamily: alegreya,
+            color: colors.blushDeep,
+            fontSize: 22,
+            fontWeight: 500,
+            letterSpacing: 4,
+            textTransform: "uppercase",
+            marginTop: 10,
+            lineHeight: 1.3,
+          }}
+        >
+          BSc · Registered Associate
+          <br />
+          Nutritionist
+        </div>
+      </div>
+    </div>
   );
 };
