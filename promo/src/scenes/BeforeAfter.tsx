@@ -26,7 +26,7 @@ const Card: React.FC<{
     { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
   );
 
-  const scale = interpolate(localFrame, [0, cardDuration], [1.04, 1.12], {
+  const scale = interpolate(localFrame, [0, cardDuration], [1.0, 1.05], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
@@ -45,7 +45,7 @@ const Card: React.FC<{
         style={{
           width: "100%",
           height: "100%",
-          objectFit: "cover",
+          objectFit: "contain",
           transform: `scale(${scale})`,
         }}
       />

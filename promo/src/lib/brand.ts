@@ -23,7 +23,6 @@ export const portraits = {
 };
 
 export const transformations = [
-  "testimonials/transformation-1.png",
   "testimonials/transformation-2.png",
   "testimonials/transformation-3.png",
   "testimonials/transformation-4.png",

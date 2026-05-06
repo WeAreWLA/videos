@@ -13,7 +13,7 @@ export const SCENE_DURATIONS = {
   founder: 120, // 3-7s
   recipes: 210, // 7-14s
   combined: 240, // 14-22s — Benefits + Stats merged
-  beforeAfter: 180, // 22-28s — 4 transformations
+  beforeAfter: 210, // 22-29s — 3 transformations, longer hold each
   cta: 195, // 28-34.5s — long hold on CTA
 };
 

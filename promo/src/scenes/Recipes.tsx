@@ -138,7 +138,7 @@ export const Recipes: React.FC = () => {
             lineHeight: 1,
           }}
         >
-          21 days.
+          Real food.
         </div>
         <div
           style={{
@@ -150,7 +150,7 @@ export const Recipes: React.FC = () => {
             lineHeight: 1.05,
           }}
         >
-          30+ recipes.
+          Real flavour.
         </div>
         <div
           style={{
