@@ -10,11 +10,11 @@ import { CTA } from "./scenes/CTA";
 
 export const SCENE_DURATIONS = {
   hook: 90, // 0-3s
-  founder: 120, // 3-7s
-  recipes: 210, // 7-14s
-  combined: 240, // 14-22s — Benefits + Stats merged
-  beforeAfter: 210, // 22-29s — 3 transformations, longer hold each
-  cta: 195, // 28-34.5s — long hold on CTA
+  founder: 90, // 3-6s
+  recipes: 150, // 6-11s
+  combined: 210, // 11-18s — Benefits + Stats merged
+  beforeAfter: 210, // 18-25s — 3 transformations
+  cta: 165, // 25-30.5s — long hold on CTA
 };
 
 export const TOTAL_DURATION = Object.values(SCENE_DURATIONS).reduce(
