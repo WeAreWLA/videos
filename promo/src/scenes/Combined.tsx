@@ -149,7 +149,7 @@ export const Combined: React.FC = () => {
   const imgScale = interpolate(frame, [0, durationInFrames], [1.0, 1.12]);
   const imgOpacity = interpolate(frame, [0, 20], [0, 0.32], { extrapolateRight: "clamp" });
 
-  const dividerW = interpolate(frame, [170, 200], [0, 240], {
+  const dividerW = interpolate(frame, [110, 140], [0, 240], {
     extrapolateRight: "clamp",
   });
 
@@ -250,7 +250,7 @@ export const Combined: React.FC = () => {
               index={i}
               value={s.value}
               label={s.label}
-              baseDelay={200}
+              baseDelay={130}
             />
           ))}
         </div>
