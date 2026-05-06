@@ -31,11 +31,11 @@ const RecipeCard: React.FC<{
   });
 
   const positions = [
-    { top: 480, left: 60, w: 460, h: 440, rot: -3 },
-    { top: 460, left: 560, w: 460, h: 440, rot: 4 },
-    { top: 940, left: 60, w: 460, h: 440, rot: 3 },
-    { top: 920, left: 560, w: 460, h: 440, rot: -2 },
-    { top: 1400, left: 280, w: 520, h: 460, rot: 1 },
+    { top: 600, left: 70, w: 440, h: 400, rot: -3 },
+    { top: 580, left: 570, w: 440, h: 400, rot: 4 },
+    { top: 1020, left: 70, w: 440, h: 400, rot: 3 },
+    { top: 1000, left: 570, w: 440, h: 400, rot: -2 },
+    { top: 1450, left: 290, w: 500, h: 430, rot: 1 },
   ];
 
   const p = positions[index];
@@ -120,49 +120,89 @@ export const Recipes: React.FC = () => {
           style={{
             fontFamily: alegreya,
             color: colors.blushDeep,
-            fontSize: 32,
+            fontSize: 30,
             fontWeight: 500,
             letterSpacing: 8,
             textTransform: "uppercase",
-            marginBottom: 20,
+            marginBottom: 16,
           }}
         >
-          Inside the reset
+          How it works
         </div>
         <div
           style={{
             fontFamily: baskerville,
             color: colors.navy,
-            fontSize: 104,
+            fontSize: 88,
             fontWeight: 700,
             lineHeight: 1,
           }}
         >
-          Real food.
+          Three simple
         </div>
         <div
           style={{
             fontFamily: baskerville,
             color: colors.navy,
-            fontSize: 104,
+            fontSize: 88,
             fontStyle: "italic",
             fontWeight: 400,
             lineHeight: 1.05,
           }}
         >
-          Real flavour.
+          principles.
         </div>
         <div
           style={{
-            fontFamily: alegreya,
-            color: colors.ink,
-            fontSize: 32,
-            fontWeight: 500,
-            marginTop: 16,
-            letterSpacing: 1,
+            display: "flex",
+            justifyContent: "space-between",
+            marginTop: 32,
+            padding: "0 20px",
           }}
         >
-          No 1,200-calorie plans. No cutting out carbs.
+          {[
+            ["01", "Stabilise", "Stops cravings"],
+            ["02", "Structure", "Ends overeating"],
+            ["03", "Simplify", "Habits that stick"],
+          ].map(([n, name, tag]) => (
+            <div key={n} style={{ flex: 1, textAlign: "center" }}>
+              <div
+                style={{
+                  fontFamily: baskerville,
+                  color: colors.blushDeep,
+                  fontSize: 26,
+                  fontWeight: 700,
+                  letterSpacing: 2,
+                }}
+              >
+                {n}
+              </div>
+              <div
+                style={{
+                  fontFamily: baskerville,
+                  color: colors.navy,
+                  fontSize: 30,
+                  fontWeight: 700,
+                  marginTop: 6,
+                  lineHeight: 1.1,
+                }}
+              >
+                {name}
+              </div>
+              <div
+                style={{
+                  fontFamily: alegreya,
+                  color: colors.ink,
+                  fontSize: 18,
+                  fontWeight: 500,
+                  letterSpacing: 0.5,
+                  marginTop: 4,
+                }}
+              >
+                {tag}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 
