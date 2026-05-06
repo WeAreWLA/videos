@@ -71,7 +71,7 @@ const RecipeCard: React.FC<{
         style={{
           fontFamily: alegreya,
           color: colors.navy,
-          fontSize: 22,
+          fontSize: 26,
           letterSpacing: 4,
           textTransform: "uppercase",
           textAlign: "center",
@@ -120,7 +120,7 @@ export const Recipes: React.FC = () => {
           style={{
             fontFamily: alegreya,
             color: colors.blushDeep,
-            fontSize: 26,
+            fontSize: 32,
             fontWeight: 500,
             letterSpacing: 8,
             textTransform: "uppercase",
@@ -133,7 +133,7 @@ export const Recipes: React.FC = () => {
           style={{
             fontFamily: baskerville,
             color: colors.navy,
-            fontSize: 86,
+            fontSize: 104,
             fontWeight: 700,
             lineHeight: 1,
           }}
@@ -144,7 +144,7 @@ export const Recipes: React.FC = () => {
           style={{
             fontFamily: baskerville,
             color: colors.navy,
-            fontSize: 86,
+            fontSize: 104,
             fontStyle: "italic",
             fontWeight: 400,
             lineHeight: 1.05,
@@ -156,7 +156,8 @@ export const Recipes: React.FC = () => {
           style={{
             fontFamily: alegreya,
             color: colors.ink,
-            fontSize: 26,
+            fontSize: 32,
+            fontWeight: 500,
             marginTop: 16,
             letterSpacing: 1,
           }}

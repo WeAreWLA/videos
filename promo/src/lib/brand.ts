@@ -21,3 +21,10 @@ export const portraits = {
   laughing: "portraits/laughing.jpg",
   journaling: "portraits/journaling.jpg",
 };
+
+export const transformations = [
+  "testimonials/transformation-1.jpg",
+  "testimonials/transformation-2.jpg",
+  "testimonials/transformation-3.jpg",
+  "testimonials/transformation-4.jpg",
+];

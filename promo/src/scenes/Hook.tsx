@@ -36,7 +36,7 @@ export const Hook: React.FC = () => {
           style={{
             fontFamily: alegreya,
             color: colors.blushDeep,
-            fontSize: 32,
+            fontSize: 40,
             fontWeight: 500,
             letterSpacing: 10,
             textTransform: "uppercase",
@@ -51,7 +51,7 @@ export const Hook: React.FC = () => {
           style={{
             fontFamily: baskerville,
             color: colors.navy,
-            fontSize: 360,
+            fontSize: 440,
             fontWeight: 700,
             lineHeight: 0.9,
             transform: `scale(${interpolate(number, [0, 1], [0.6, 1])})`,
@@ -64,7 +64,7 @@ export const Hook: React.FC = () => {
           style={{
             fontFamily: baskerville,
             color: colors.navy,
-            fontSize: 110,
+            fontSize: 134,
             fontWeight: 400,
             fontStyle: "italic",
             letterSpacing: 4,
@@ -89,8 +89,8 @@ export const Hook: React.FC = () => {
           style={{
             fontFamily: alegreya,
             color: colors.ink,
-            fontSize: 42,
-            fontWeight: 400,
+            fontSize: 50,
+            fontWeight: 500,
             letterSpacing: 1,
             marginTop: 40,
             textAlign: "center",

@@ -50,7 +50,8 @@ export const Founder: React.FC = () => {
           style={{
             fontFamily: alegreya,
             color: colors.blush,
-            fontSize: 28,
+            fontSize: 34,
+            fontWeight: 500,
             letterSpacing: 8,
             textTransform: "uppercase",
             opacity: eyebrow,
@@ -63,7 +64,7 @@ export const Founder: React.FC = () => {
           style={{
             fontFamily: baskerville,
             color: colors.cream,
-            fontSize: 96,
+            fontSize: 116,
             fontWeight: 700,
             lineHeight: 1.05,
             opacity: headline,

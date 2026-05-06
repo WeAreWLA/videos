@@ -78,7 +78,7 @@ export const CTA: React.FC = () => {
             style={{
               fontFamily: alegreya,
               color: colors.blush,
-              fontSize: 28,
+              fontSize: 34,
               fontWeight: 600,
               letterSpacing: 8,
               textTransform: "uppercase",
@@ -91,7 +91,7 @@ export const CTA: React.FC = () => {
             style={{
               fontFamily: baskerville,
               color: colors.cream,
-              fontSize: 130,
+              fontSize: 154,
               fontWeight: 700,
               lineHeight: 1,
             }}
@@ -102,7 +102,7 @@ export const CTA: React.FC = () => {
             style={{
               fontFamily: baskerville,
               color: colors.cream,
-              fontSize: 130,
+              fontSize: 154,
               fontStyle: "italic",
               fontWeight: 400,
               lineHeight: 1.05,
@@ -116,11 +116,12 @@ export const CTA: React.FC = () => {
           style={{
             fontFamily: alegreya,
             color: colors.cream,
-            fontSize: 28,
+            fontSize: 34,
+            fontWeight: 500,
             opacity: sub,
             textAlign: "center",
             letterSpacing: 1,
-            maxWidth: 760,
+            maxWidth: 820,
             lineHeight: 1.4,
           }}
         >
@@ -136,7 +137,7 @@ export const CTA: React.FC = () => {
             background: colors.blush,
             color: colors.navy,
             fontFamily: alegreya,
-            fontSize: 32,
+            fontSize: 38,
             fontWeight: 700,
             letterSpacing: 3,
             textTransform: "uppercase",
@@ -152,7 +153,8 @@ export const CTA: React.FC = () => {
           style={{
             fontFamily: alegreya,
             color: colors.cream,
-            fontSize: 22,
+            fontSize: 28,
+            fontWeight: 500,
             opacity: sub * 0.7,
             letterSpacing: 1,
           }}

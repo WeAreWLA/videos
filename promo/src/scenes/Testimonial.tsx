@@ -59,7 +59,7 @@ export const Testimonial: React.FC = () => {
           style={{
             fontFamily: alegreya,
             color: colors.blushDeep,
-            fontSize: 26,
+            fontSize: 32,
             fontWeight: 500,
             letterSpacing: 8,
             textTransform: "uppercase",
@@ -89,7 +89,7 @@ export const Testimonial: React.FC = () => {
           style={{
             fontFamily: baskerville,
             color: colors.navy,
-            fontSize: 72,
+            fontSize: 88,
             fontStyle: "italic",
             fontWeight: 400,
             lineHeight: 1.2,
@@ -114,7 +114,7 @@ export const Testimonial: React.FC = () => {
           style={{
             fontFamily: alegreya,
             color: colors.ink,
-            fontSize: 26,
+            fontSize: 32,
             letterSpacing: 6,
             textTransform: "uppercase",
             marginTop: 28,
@@ -128,7 +128,8 @@ export const Testimonial: React.FC = () => {
           style={{
             fontFamily: alegreya,
             color: colors.ink,
-            fontSize: 22,
+            fontSize: 28,
+            fontWeight: 500,
             marginTop: 80,
             opacity: proofIn * 0.7,
             transform: `translateY(${proofY}px)`,

@@ -10,7 +10,7 @@ import { colors, portraits } from "../lib/brand";
 import { baskerville, alegreya } from "../lib/fonts";
 import { SafeImg } from "../lib/SafeImg";
 
-const items = [
+const benefits = [
   {
     title: "Nutritionist-designed",
     body: "Built by a Registered Associate Nutritionist for women 45+ navigating menopause.",
@@ -21,25 +21,31 @@ const items = [
   },
   {
     title: "50,000+ women like you",
-    body: "No more starting over every Monday. Just steady, sustainable change.",
+    body: "No more starting over every Monday. Steady, sustainable change.",
   },
+];
+
+const stats = [
+  { value: "10 yrs", label: "Clinical practice" },
+  { value: "4.9 ★", label: "Member rating" },
 ];
 
 const Bullet: React.FC<{
   index: number;
   title: string;
   body: string;
-}> = ({ index, title, body }) => {
+  baseDelay: number;
+}> = ({ index, title, body, baseDelay }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  const delay = 25 + index * 28;
+  const delay = baseDelay + index * 22;
   const enter = spring({
     frame: frame - delay,
     fps,
     config: { damping: 20, mass: 0.6 },
   });
-  const x = interpolate(enter, [0, 1], [-60, 0]);
+  const x = interpolate(enter, [0, 1], [-50, 0]);
 
   return (
     <div
@@ -68,7 +74,7 @@ const Bullet: React.FC<{
           style={{
             fontFamily: baskerville,
             color: colors.navy,
-            fontSize: 52,
+            fontSize: 56,
             fontWeight: 700,
             lineHeight: 1.05,
           }}
@@ -80,9 +86,10 @@ const Bullet: React.FC<{
             fontFamily: alegreya,
             color: colors.ink,
             fontSize: 28,
+            fontWeight: 500,
             lineHeight: 1.35,
-            marginTop: 10,
-            maxWidth: 720,
+            marginTop: 8,
+            maxWidth: 780,
           }}
         >
           {body}
@@ -92,7 +99,61 @@ const Bullet: React.FC<{
   );
 };
 
-export const Benefits: React.FC = () => {
+const StatTile: React.FC<{
+  index: number;
+  value: string;
+  label: string;
+  baseDelay: number;
+}> = ({ index, value, label, baseDelay }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+
+  const delay = baseDelay + index * 14;
+  const enter = spring({
+    frame: frame - delay,
+    fps,
+    config: { damping: 18, mass: 0.6 },
+  });
+  const y = interpolate(enter, [0, 1], [30, 0]);
+
+  return (
+    <div
+      style={{
+        flex: 1,
+        opacity: enter,
+        transform: `translateY(${y}px)`,
+        textAlign: "center",
+      }}
+    >
+      <div
+        style={{
+          fontFamily: baskerville,
+          color: colors.navy,
+          fontSize: 100,
+          fontWeight: 700,
+          lineHeight: 1,
+        }}
+      >
+        {value}
+      </div>
+      <div
+        style={{
+          fontFamily: alegreya,
+          color: colors.blushDeep,
+          fontSize: 22,
+          fontWeight: 500,
+          letterSpacing: 6,
+          textTransform: "uppercase",
+          marginTop: 14,
+        }}
+      >
+        {label}
+      </div>
+    </div>
+  );
+};
+
+export const Combined: React.FC = () => {
   const frame = useCurrentFrame();
   const { durationInFrames } = useVideoConfig();
 
@@ -106,7 +167,11 @@ export const Benefits: React.FC = () => {
   const headY = interpolate(frame, [0, 20], [24, 0], { extrapolateRight: "clamp" });
 
   const imgScale = interpolate(frame, [0, durationInFrames], [1.0, 1.12]);
-  const imgOpacity = interpolate(frame, [0, 20], [0, 0.4], { extrapolateRight: "clamp" });
+  const imgOpacity = interpolate(frame, [0, 20], [0, 0.32], { extrapolateRight: "clamp" });
+
+  const dividerW = interpolate(frame, [120, 150], [0, 240], {
+    extrapolateRight: "clamp",
+  });
 
   return (
     <AbsoluteFill style={{ background: colors.cream, opacity: exitOpacity }}>
@@ -123,27 +188,27 @@ export const Benefits: React.FC = () => {
           }}
         />
       </AbsoluteFill>
-      <AbsoluteFill style={{ background: colors.cream, opacity: 0.78 }} />
+      <AbsoluteFill style={{ background: colors.cream, opacity: 0.82 }} />
 
       <AbsoluteFill
         style={{
           padding: 80,
-          paddingTop: 160,
+          paddingTop: 130,
           flexDirection: "column",
-          gap: 70,
         }}
       >
         <div
           style={{
             opacity: headIn,
             transform: `translateY(${headY}px)`,
+            marginBottom: 56,
           }}
         >
           <div
             style={{
               fontFamily: alegreya,
               color: colors.blushDeep,
-              fontSize: 26,
+              fontSize: 32,
               fontWeight: 500,
               letterSpacing: 8,
               textTransform: "uppercase",
@@ -156,30 +221,57 @@ export const Benefits: React.FC = () => {
             style={{
               fontFamily: baskerville,
               color: colors.navy,
-              fontSize: 88,
+              fontSize: 100,
               fontWeight: 700,
               lineHeight: 1,
             }}
           >
-            Built for the
+            You're in
           </div>
           <div
             style={{
               fontFamily: baskerville,
               color: colors.navy,
-              fontSize: 88,
+              fontSize: 100,
               fontStyle: "italic",
               fontWeight: 400,
               lineHeight: 1.05,
             }}
           >
-            woman you are.
+            good company.
           </div>
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: 56 }}>
-          {items.map((it, i) => (
-            <Bullet key={it.title} index={i} title={it.title} body={it.body} />
+        <div style={{ display: "flex", flexDirection: "column", gap: 38 }}>
+          {benefits.map((b, i) => (
+            <Bullet
+              key={b.title}
+              index={i}
+              title={b.title}
+              body={b.body}
+              baseDelay={28}
+            />
+          ))}
+        </div>
+
+        <div
+          style={{
+            width: dividerW,
+            height: 2,
+            background: colors.blushDeep,
+            margin: "44px auto 36px",
+          }}
+        />
+
+        <div style={{ display: "flex", gap: 60, justifyContent: "center" }}>
+          {stats.map((s, i) => (
+            <StatTile
+              key={s.value}
+              index={i}
+              value={s.value}
+              label={s.label}
+              baseDelay={140}
+            />
           ))}
         </div>
       </AbsoluteFill>
