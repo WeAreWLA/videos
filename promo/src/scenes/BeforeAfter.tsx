@@ -6,7 +6,7 @@ import {
   useVideoConfig,
 } from "remotion";
 import { colors, transformations } from "../lib/brand";
-import { baskerville, alegreya } from "../lib/fonts";
+import { alegreya } from "../lib/fonts";
 import { SafeImg } from "../lib/SafeImg";
 
 const Card: React.FC<{
