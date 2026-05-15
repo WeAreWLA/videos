@@ -55,3 +55,11 @@
   font-display: block;
   src: url("../public/fonts/alegreya-sans-700.ttf") format("truetype");
 }
+
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+  src: url("../public/fonts/montserrat-bold.ttf") format("truetype");
+}
