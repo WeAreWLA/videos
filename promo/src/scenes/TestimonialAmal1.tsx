@@ -24,12 +24,23 @@ const findCurrentWord = (t: number): CaptionWord | null => {
   return null;
 };
 
+const BASE_FONT_SIZE = 160;
+const MAX_LINE_WIDTH = 980;
+const APPROX_CHAR_WIDTH_EM = 0.62;
+
+const fitFontSize = (text: string) => {
+  const len = Math.max(1, text.length);
+  const fitted = MAX_LINE_WIDTH / (len * APPROX_CHAR_WIDTH_EM);
+  return Math.min(BASE_FONT_SIZE, fitted);
+};
+
 const WordDisplay: React.FC<{ word: CaptionWord; t: number }> = ({ word, t }) => {
   const dt = Math.max(0, t - word.start);
   const progress = Math.min(1, dt / POP_IN_SECONDS);
   const eased = easeOut(progress);
   const scale = 0.8 + 0.2 * eased;
   const opacity = eased;
+  const fontSize = fitFontSize(word.text);
   return (
     <div
       style={{
@@ -37,14 +48,13 @@ const WordDisplay: React.FC<{ word: CaptionWord; t: number }> = ({ word, t }) =>
         fontWeight: 700,
         textTransform: "uppercase",
         color: "#ffffff",
-        fontSize: 160,
+        fontSize,
         lineHeight: 1.05,
         letterSpacing: 1,
         textAlign: "center",
         textShadow:
           "0 4px 14px rgba(0,0,0,0.55), 0 2px 4px rgba(0,0,0,0.7)",
-        maxWidth: 980,
-        wordBreak: "break-word",
+        whiteSpace: "nowrap",
         transform: `scale(${scale})`,
         opacity,
       }}
