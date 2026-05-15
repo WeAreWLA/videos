@@ -7,33 +7,29 @@ import {
   useVideoConfig,
 } from "remotion";
 import { montserrat } from "../lib/fonts";
-import { amalOneChunks, CaptionChunk, CaptionWord } from "./testimonials/amal-1.chunks";
+import { amalOneWords, CaptionWord } from "./testimonials/amal-1.words";
 
 const VIDEO_SRC = "Video Testimonials/Amal/testimonial-amal-1.mp4";
 const POP_IN_SECONDS = 0.08;
 
 const easeOut = (x: number) => 1 - Math.pow(1 - x, 3);
 
-const Word: React.FC<{ word: CaptionWord; t: number }> = ({ word, t }) => {
-  const dt = t - word.popAt;
-  const progress = Math.min(1, Math.max(0, dt / POP_IN_SECONDS));
+const findCurrentWord = (t: number): CaptionWord | null => {
+  for (let i = 0; i < amalOneWords.length; i++) {
+    const w = amalOneWords[i];
+    const next = amalOneWords[i + 1];
+    const wordEnd = next ? next.start : w.end;
+    if (t >= w.start && t < wordEnd) return w;
+  }
+  return null;
+};
+
+const WordDisplay: React.FC<{ word: CaptionWord; t: number }> = ({ word, t }) => {
+  const dt = Math.max(0, t - word.start);
+  const progress = Math.min(1, dt / POP_IN_SECONDS);
   const eased = easeOut(progress);
   const scale = 0.8 + 0.2 * eased;
   const opacity = eased;
-  return (
-    <span
-      style={{
-        display: "inline-block",
-        transform: `scale(${scale})`,
-        opacity,
-      }}
-    >
-      {word.text}
-    </span>
-  );
-};
-
-const CaptionLine: React.FC<{ chunk: CaptionChunk; t: number }> = ({ chunk, t }) => {
   return (
     <div
       style={{
@@ -41,23 +37,19 @@ const CaptionLine: React.FC<{ chunk: CaptionChunk; t: number }> = ({ chunk, t })
         fontWeight: 700,
         textTransform: "uppercase",
         color: "#ffffff",
-        fontSize: 132,
+        fontSize: 160,
         lineHeight: 1.05,
         letterSpacing: 1,
         textAlign: "center",
         textShadow:
           "0 4px 14px rgba(0,0,0,0.55), 0 2px 4px rgba(0,0,0,0.7)",
-        maxWidth: 940,
+        maxWidth: 980,
         wordBreak: "break-word",
-        display: "flex",
-        flexWrap: "wrap",
-        justifyContent: "center",
-        gap: "0 24px",
+        transform: `scale(${scale})`,
+        opacity,
       }}
     >
-      {chunk.words.map((w, i) => (
-        <Word key={`${chunk.start}-${i}`} word={w} t={t} />
-      ))}
+      {word.text}
     </div>
   );
 };
@@ -67,7 +59,7 @@ export const TestimonialAmal1: React.FC = () => {
   const { fps } = useVideoConfig();
   const t = frame / fps;
 
-  const current = amalOneChunks.find((c) => t >= c.start && t <= c.end);
+  const current = findCurrentWord(t);
 
   return (
     <AbsoluteFill style={{ background: "#000" }}>
@@ -79,7 +71,7 @@ export const TestimonialAmal1: React.FC = () => {
           paddingBottom: 280,
         }}
       >
-        {current ? <CaptionLine chunk={current} t={t} /> : null}
+        {current ? <WordDisplay word={current} t={t} /> : null}
       </AbsoluteFill>
     </AbsoluteFill>
   );
