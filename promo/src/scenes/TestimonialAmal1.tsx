@@ -24,9 +24,9 @@ const findCurrentWord = (t: number): CaptionWord | null => {
   return null;
 };
 
-const BASE_FONT_SIZE = 160;
-const MAX_LINE_WIDTH = 980;
-const APPROX_CHAR_WIDTH_EM = 0.62;
+const BASE_FONT_SIZE = 140;
+const MAX_LINE_WIDTH = 900;
+const APPROX_CHAR_WIDTH_EM = 0.7;
 
 const fitFontSize = (text: string) => {
   const len = Math.max(1, text.length);
@@ -73,7 +73,9 @@ export const TestimonialAmal1: React.FC = () => {
 
   return (
     <AbsoluteFill style={{ background: "#000" }}>
-      <OffthreadVideo src={staticFile(VIDEO_SRC)} />
+      <AbsoluteFill style={{ filter: "brightness(1.12) saturate(1.04)" }}>
+        <OffthreadVideo src={staticFile(VIDEO_SRC)} />
+      </AbsoluteFill>
       <AbsoluteFill
         style={{
           justifyContent: "flex-end",
