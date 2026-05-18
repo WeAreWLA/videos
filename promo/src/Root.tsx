@@ -7,6 +7,10 @@ import {
   TestimonialAmal1,
   TESTIMONIAL_AMAL_1_DURATION,
 } from "./scenes/TestimonialAmal1";
+import {
+  TestimonialAmal2,
+  TESTIMONIAL_AMAL_2_DURATION,
+} from "./scenes/TestimonialAmal2";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -77,6 +81,14 @@ export const RemotionRoot: React.FC = () => {
         id="TestimonialAmal1"
         component={TestimonialAmal1}
         durationInFrames={Math.ceil(TESTIMONIAL_AMAL_1_DURATION * 30)}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="TestimonialAmal2"
+        component={TestimonialAmal2}
+        durationInFrames={Math.ceil(TESTIMONIAL_AMAL_2_DURATION * 30)}
         fps={30}
         width={1080}
         height={1920}
