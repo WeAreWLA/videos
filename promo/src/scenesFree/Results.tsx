@@ -103,7 +103,7 @@ export const Results: React.FC = () => {
       <div
         style={{
           position: "absolute",
-          top: 220,
+          top: 160,
           left: 0,
           right: 0,
           textAlign: "center",

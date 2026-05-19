@@ -16,17 +16,20 @@ export const Hook: React.FC = () => {
   const freeIn = interpolate(frame, [0, 18], [0, 1], {
     extrapolateRight: "clamp",
   });
-  const fatLoss = interpolate(frame, [8, 28], [0, 1], {
-    extrapolateRight: "clamp",
-  });
-  const fatLossY = interpolate(fatLoss, [0, 1], [20, 0]);
+  const freeY = interpolate(freeIn, [0, 1], [20, 0]);
 
   const number = spring({
-    frame: frame - 22,
+    frame: frame - 10,
     fps,
     config: { damping: 16, mass: 0.6 },
   });
-  const dayReset = spring({
+
+  const fatLoss = spring({
+    frame: frame - 26,
+    fps,
+    config: { damping: 18 },
+  });
+  const reset = spring({
     frame: frame - 38,
     fps,
     config: { damping: 18 },
@@ -62,10 +65,11 @@ export const Hook: React.FC = () => {
           style={{
             fontFamily: baskerville,
             color: c.coral,
-            fontSize: 130,
+            fontSize: 150,
             fontStyle: "italic",
             fontWeight: 500,
             opacity: freeIn,
+            transform: `translateY(${freeY}px)`,
             lineHeight: 1,
           }}
         >
@@ -74,15 +78,51 @@ export const Hook: React.FC = () => {
 
         <div
           style={{
+            display: "flex",
+            alignItems: "baseline",
+            gap: 28,
+            opacity: number,
+            transform: `scale(${interpolate(number, [0, 1], [0.7, 1])})`,
+            marginTop: 18,
+          }}
+        >
+          <div
+            style={{
+              fontFamily: baskerville,
+              color: c.navy,
+              fontSize: 320,
+              fontWeight: 700,
+              lineHeight: 0.9,
+            }}
+          >
+            5
+          </div>
+          <div
+            style={{
+              fontFamily: baskerville,
+              color: c.navy,
+              fontSize: 140,
+              fontStyle: "italic",
+              fontWeight: 400,
+              lineHeight: 1,
+              letterSpacing: 2,
+            }}
+          >
+            day
+          </div>
+        </div>
+
+        <div
+          style={{
             fontFamily: baskerville,
             color: c.navy,
-            fontSize: 88,
+            fontSize: 100,
             fontWeight: 700,
             letterSpacing: 8,
             textTransform: "uppercase",
             opacity: fatLoss,
-            transform: `translateY(${fatLossY}px)`,
-            marginTop: 14,
+            transform: `translateY(${interpolate(fatLoss, [0, 1], [30, 0])}px)`,
+            marginTop: 16,
             lineHeight: 1,
           }}
         >
@@ -93,33 +133,17 @@ export const Hook: React.FC = () => {
           style={{
             fontFamily: baskerville,
             color: c.navy,
-            fontSize: 540,
-            fontWeight: 700,
-            lineHeight: 0.9,
-            transform: `scale(${interpolate(number, [0, 1], [0.6, 1])})`,
-            opacity: number,
-            marginTop: 14,
-            marginBottom: 0,
-          }}
-        >
-          5
-        </div>
-
-        <div
-          style={{
-            fontFamily: baskerville,
-            color: c.navy,
-            fontSize: 88,
+            fontSize: 100,
             fontWeight: 700,
             letterSpacing: 8,
             textTransform: "uppercase",
-            opacity: dayReset,
-            transform: `translateY(${interpolate(dayReset, [0, 1], [40, 0])}px)`,
-            marginTop: -10,
+            opacity: reset,
+            transform: `translateY(${interpolate(reset, [0, 1], [30, 0])}px)`,
+            marginTop: 18,
             lineHeight: 1,
           }}
         >
-          Day Reset
+          Reset
         </div>
 
         <div
@@ -127,7 +151,7 @@ export const Hook: React.FC = () => {
             width: lineW,
             height: 2,
             background: c.coral,
-            marginTop: 36,
+            marginTop: 38,
           }}
         />
 
