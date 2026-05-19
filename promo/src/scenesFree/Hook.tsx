@@ -13,27 +13,26 @@ export const Hook: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  const eyebrowIn = interpolate(frame, [0, 18], [0, 1], {
+  const freeIn = interpolate(frame, [0, 18], [0, 1], {
     extrapolateRight: "clamp",
   });
-
-  const freeIn = interpolate(frame, [10, 32], [0, 1], {
+  const fatLoss = interpolate(frame, [8, 28], [0, 1], {
     extrapolateRight: "clamp",
   });
-  const freeY = interpolate(freeIn, [0, 1], [30, 0]);
+  const fatLossY = interpolate(fatLoss, [0, 1], [20, 0]);
 
   const number = spring({
-    frame: frame - 20,
+    frame: frame - 22,
     fps,
     config: { damping: 16, mass: 0.6 },
   });
-  const dayText = spring({
-    frame: frame - 32,
+  const dayReset = spring({
+    frame: frame - 38,
     fps,
     config: { damping: 18 },
   });
 
-  const lineW = interpolate(frame, [60, 90], [0, 320], {
+  const lineW = interpolate(frame, [60, 90], [0, 360], {
     extrapolateRight: "clamp",
   });
   const sub = interpolate(frame, [70, 92], [0, 1], {
@@ -61,31 +60,13 @@ export const Hook: React.FC = () => {
       >
         <div
           style={{
-            fontFamily: alegreya,
-            color: c.coral,
-            fontSize: 46,
-            fontWeight: 700,
-            letterSpacing: 10,
-            textTransform: "uppercase",
-            opacity: eyebrowIn,
-            marginBottom: 36,
-            textAlign: "center",
-          }}
-        >
-          Fat Loss Reset
-        </div>
-
-        <div
-          style={{
             fontFamily: baskerville,
             color: c.coral,
-            fontSize: 124,
+            fontSize: 130,
             fontStyle: "italic",
             fontWeight: 500,
             opacity: freeIn,
-            transform: `translateY(${freeY}px)`,
             lineHeight: 1,
-            marginBottom: -10,
           }}
         >
           Free
@@ -93,31 +74,52 @@ export const Hook: React.FC = () => {
 
         <div
           style={{
-            fontFamily: baskerville,
+            fontFamily: alegreya,
             color: c.navy,
-            fontSize: 520,
+            fontSize: 88,
             fontWeight: 700,
-            lineHeight: 0.9,
-            transform: `scale(${interpolate(number, [0, 1], [0.6, 1])})`,
-            opacity: number,
+            letterSpacing: 12,
+            textTransform: "uppercase",
+            opacity: fatLoss,
+            transform: `translateY(${fatLossY}px)`,
+            marginTop: 14,
+            lineHeight: 1,
           }}
         >
-          5
+          Fat Loss
         </div>
+
         <div
           style={{
             fontFamily: baskerville,
             color: c.navy,
-            fontSize: 154,
-            fontWeight: 400,
-            fontStyle: "italic",
-            letterSpacing: 4,
-            opacity: dayText,
-            transform: `translateY(${interpolate(dayText, [0, 1], [40, 0])}px)`,
-            marginTop: -20,
+            fontSize: 540,
+            fontWeight: 700,
+            lineHeight: 0.9,
+            transform: `scale(${interpolate(number, [0, 1], [0.6, 1])})`,
+            opacity: number,
+            marginTop: 14,
+            marginBottom: 0,
           }}
         >
-          days
+          5
+        </div>
+
+        <div
+          style={{
+            fontFamily: alegreya,
+            color: c.navy,
+            fontSize: 88,
+            fontWeight: 700,
+            letterSpacing: 12,
+            textTransform: "uppercase",
+            opacity: dayReset,
+            transform: `translateY(${interpolate(dayReset, [0, 1], [40, 0])}px)`,
+            marginTop: -10,
+            lineHeight: 1,
+          }}
+        >
+          Day Reset
         </div>
 
         <div
@@ -125,7 +127,7 @@ export const Hook: React.FC = () => {
             width: lineW,
             height: 2,
             background: c.coral,
-            marginTop: 30,
+            marginTop: 36,
           }}
         />
 
@@ -133,10 +135,10 @@ export const Hook: React.FC = () => {
           style={{
             fontFamily: alegreya,
             color: c.ink,
-            fontSize: 56,
+            fontSize: 50,
             fontWeight: 500,
             letterSpacing: 1,
-            marginTop: 32,
+            marginTop: 28,
             textAlign: "center",
             opacity: sub,
             lineHeight: 1.2,
@@ -159,14 +161,14 @@ export const Hook: React.FC = () => {
           style={{
             fontFamily: alegreya,
             color: c.navy,
-            fontSize: 36,
+            fontSize: 34,
             fontWeight: 700,
             letterSpacing: 4,
             textTransform: "uppercase",
-            marginTop: 36,
+            marginTop: 30,
             opacity: dateIn,
             background: c.cream2,
-            padding: "16px 36px",
+            padding: "14px 32px",
             borderRadius: 999,
             textAlign: "center",
           }}

@@ -38,28 +38,28 @@ const Signal: React.FC<{ index: number; text: string; baseDelay: number }> = ({
       style={{
         display: "flex",
         alignItems: "center",
-        gap: 22,
+        gap: 30,
         opacity: enter,
         transform: `translateX(${x}px)`,
         background: c.paper,
         border: `1px solid rgba(14,39,70,0.08)`,
-        borderRadius: 14,
-        padding: "20px 26px",
-        boxShadow: "0 14px 30px -22px rgba(14,39,70,0.22)",
+        borderRadius: 18,
+        padding: "26px 32px",
+        boxShadow: "0 18px 36px -24px rgba(14,39,70,0.22)",
       }}
     >
       <div
         style={{
           flex: "none",
-          width: 52,
-          height: 52,
+          width: 76,
+          height: 76,
           borderRadius: "50%",
           background: c.cream2,
           color: c.coral,
           fontFamily: baskerville,
           fontStyle: "italic",
           fontWeight: 700,
-          fontSize: 26,
+          fontSize: 40,
           display: "grid",
           placeItems: "center",
         }}
@@ -70,10 +70,10 @@ const Signal: React.FC<{ index: number; text: string; baseDelay: number }> = ({
         style={{
           fontFamily: baskerville,
           color: c.navy,
-          fontSize: 30,
+          fontSize: 38,
           fontWeight: 600,
           lineHeight: 1.25,
-          letterSpacing: -0.3,
+          letterSpacing: -0.4,
         }}
       >
         {text}
@@ -107,33 +107,25 @@ export const Problem: React.FC = () => {
     extrapolateRight: "clamp",
   });
 
-  const verdictStart = 130;
-  const verdictIn = spring({
-    frame: frame - verdictStart,
-    fps: 30,
-    config: { damping: 20, mass: 0.6 },
-  });
-  const verdictY = interpolate(verdictIn, [0, 1], [30, 0]);
-
   return (
     <AbsoluteFill style={{ background: c.cream, opacity: exitOpacity }}>
       <AbsoluteFill
         style={{
           padding: 64,
-          paddingTop: 90,
           flexDirection: "column",
+          justifyContent: "center",
         }}
       >
         <div
           style={{
             fontFamily: alegreya,
             color: c.coral,
-            fontSize: 28,
+            fontSize: 44,
             fontWeight: 700,
             letterSpacing: 8,
             textTransform: "uppercase",
             opacity: eyebrow,
-            marginBottom: 18,
+            marginBottom: 22,
           }}
         >
           Sound familiar?
@@ -149,7 +141,7 @@ export const Problem: React.FC = () => {
             letterSpacing: -1,
             opacity: head,
             transform: `translateY(${headY}px)`,
-            marginBottom: 22,
+            marginBottom: 26,
           }}
         >
           Over 45 and{" "}
@@ -163,10 +155,10 @@ export const Problem: React.FC = () => {
             fontFamily: baskerville,
             fontStyle: "italic",
             color: c.navy,
-            fontSize: 26,
+            fontSize: 34,
             lineHeight: 1.45,
             opacity: intro,
-            marginBottom: 32,
+            marginBottom: 34,
             maxWidth: 940,
           }}
         >
@@ -178,49 +170,12 @@ export const Problem: React.FC = () => {
           style={{
             display: "flex",
             flexDirection: "column",
-            gap: 12,
+            gap: 16,
           }}
         >
           {signals.map((s, i) => (
             <Signal key={s} index={i} text={s} baseDelay={44} />
           ))}
-        </div>
-
-        <div
-          style={{
-            marginTop: 30,
-            padding: "26px 30px",
-            background: c.cream2,
-            borderLeft: `5px solid ${c.coral}`,
-            borderRadius: 14,
-            opacity: verdictIn,
-            transform: `translateY(${verdictY}px)`,
-          }}
-        >
-          <div
-            style={{
-              fontFamily: baskerville,
-              fontStyle: "italic",
-              color: c.navy,
-              fontSize: 26,
-              lineHeight: 1.45,
-              marginBottom: 12,
-            }}
-          >
-            None of this is laziness. None of it is willpower. It's hormones,
-            blood sugar, and a body that needs a different approach.
-          </div>
-          <div
-            style={{
-              fontFamily: baskerville,
-              color: c.coral,
-              fontSize: 30,
-              fontWeight: 700,
-              lineHeight: 1.2,
-            }}
-          >
-            That's exactly what these 5 days are for.
-          </div>
         </div>
       </AbsoluteFill>
     </AbsoluteFill>

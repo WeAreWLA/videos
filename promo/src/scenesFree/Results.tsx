@@ -114,15 +114,15 @@ export const Results: React.FC = () => {
           style={{
             fontFamily: baskerville,
             color: c.cream,
-            fontSize: 96,
+            fontSize: 64,
             fontWeight: 700,
             lineHeight: 1.05,
             letterSpacing: -1,
             textShadow: "0 2px 30px rgba(0,0,0,0.55)",
+            whiteSpace: "nowrap",
           }}
         >
-          Real Women,
-          <br />
+          Real Women,{" "}
           <span style={{ fontStyle: "italic", color: c.coralSoft, fontWeight: 500 }}>
             Real Results.
           </span>
