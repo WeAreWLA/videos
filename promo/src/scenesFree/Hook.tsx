@@ -74,11 +74,11 @@ export const Hook: React.FC = () => {
 
         <div
           style={{
-            fontFamily: alegreya,
+            fontFamily: baskerville,
             color: c.navy,
             fontSize: 88,
             fontWeight: 700,
-            letterSpacing: 12,
+            letterSpacing: 8,
             textTransform: "uppercase",
             opacity: fatLoss,
             transform: `translateY(${fatLossY}px)`,
@@ -107,11 +107,11 @@ export const Hook: React.FC = () => {
 
         <div
           style={{
-            fontFamily: alegreya,
+            fontFamily: baskerville,
             color: c.navy,
             fontSize: 88,
             fontWeight: 700,
-            letterSpacing: 12,
+            letterSpacing: 8,
             textTransform: "uppercase",
             opacity: dayReset,
             transform: `translateY(${interpolate(dayReset, [0, 1], [40, 0])}px)`,
