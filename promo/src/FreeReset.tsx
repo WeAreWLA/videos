@@ -13,8 +13,8 @@ export const FREE_RESET_DURATIONS = {
   problem: 180, // 5-11s
   inside: 180, // 11-17s
   outcomes: 180, // 17-23s
-  results: 210, // 23-30s
-  cta: 180, // 30-36s
+  results: 120, // 23-27s (3 images, ~1.3s each)
+  cta: 210, // 27-34s
 };
 
 export const FREE_RESET_TOTAL = Object.values(FREE_RESET_DURATIONS).reduce(
