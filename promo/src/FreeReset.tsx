@@ -9,12 +9,12 @@ import { Results } from "./scenesFree/Results";
 import { CTA } from "./scenesFree/CTA";
 
 export const FREE_RESET_DURATIONS = {
-  hook: 90, // 0-3s
-  problem: 120, // 3-7s
-  inside: 150, // 7-12s
-  outcomes: 180, // 12-18s
-  results: 210, // 18-25s
-  cta: 165, // 25-30.5s
+  hook: 150, // 0-5s
+  problem: 180, // 5-11s
+  inside: 240, // 11-19s
+  outcomes: 240, // 19-27s
+  results: 210, // 27-34s
+  cta: 180, // 34-40s
 };
 
 export const FREE_RESET_TOTAL = Object.values(FREE_RESET_DURATIONS).reduce(

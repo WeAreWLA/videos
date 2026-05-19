@@ -10,23 +10,40 @@ import { colorsFree as c } from "../lib/brandFree";
 import { baskerville, alegreya } from "../lib/fonts";
 
 const items = [
-  { t: "Daily Live Coaching", s: "Show up daily with Anna." },
-  { t: "Bank Holiday Prep Day", s: "Start strong, not stressed." },
-  { t: "Private Facebook Group", s: "Daily check-ins. Real support." },
-  { t: "Batch Cookbook (Bonus)", s: "Yours to keep.", bonus: true },
+  {
+    t: "5 Day Reset Protocol Guide",
+    d: "Your exact eating rhythm, macro balance and meal structure for the 5 days. Designed to cut sugar cravings within 72 hours and put real fat loss on the scale by Day 5.",
+  },
+  {
+    t: "Live Daily Coaching",
+    d: "Show up each day for a short live session with me. Q&A, mindset, the day's focus, and how to handle the inevitable wobble.",
+  },
+  {
+    t: "The No-Fuss Batch Cookbook",
+    d: "Simple batch-cooked meals designed to save time, reduce temptation, and make weight loss easier to stick to.",
+    bonus: true,
+  },
+  {
+    t: "Private Facebook Group",
+    d: "Real-time support, the other women in your cohort, and a place to ask the questions you've been Googling at 11pm.",
+  },
+  {
+    t: "Daily Check-Ins",
+    d: "Daily accountability to keep you focused, consistent, and following through. Five days of support, momentum, and staying on track with your goals.",
+  },
 ];
 
 const Feat: React.FC<{
   index: number;
   title: string;
-  sub: string;
+  desc: string;
   bonus?: boolean;
   baseDelay: number;
-}> = ({ index, title, sub, bonus, baseDelay }) => {
+}> = ({ index, title, desc, bonus, baseDelay }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  const delay = baseDelay + index * 14;
+  const delay = baseDelay + index * 12;
   const enter = spring({
     frame: frame - delay,
     fps,
@@ -40,30 +57,30 @@ const Feat: React.FC<{
         position: "relative",
         background: c.paper,
         border: `1px solid rgba(14,39,70,0.08)`,
-        borderRadius: 18,
-        padding: "30px 32px",
+        borderRadius: 16,
+        padding: "22px 26px",
         opacity: enter,
         transform: `translateY(${y}px)`,
-        boxShadow: "0 24px 50px -28px rgba(14,39,70,0.22)",
+        boxShadow: "0 18px 40px -26px rgba(14,39,70,0.22)",
         display: "flex",
-        alignItems: "center",
-        gap: 28,
+        alignItems: "flex-start",
+        gap: 22,
       }}
     >
       {bonus ? (
         <div
           style={{
             position: "absolute",
-            top: 16,
-            right: 16,
+            top: 14,
+            right: 14,
             background: c.coral,
             color: "#fff",
             fontFamily: alegreya,
-            fontSize: 18,
+            fontSize: 16,
             fontWeight: 700,
             letterSpacing: 3,
             textTransform: "uppercase",
-            padding: "6px 14px",
+            padding: "5px 12px",
             borderRadius: 999,
           }}
         >
@@ -73,29 +90,31 @@ const Feat: React.FC<{
       <div
         style={{
           flex: "none",
-          width: 86,
-          height: 86,
-          borderRadius: 18,
+          width: 64,
+          height: 64,
+          borderRadius: 14,
           background: c.cream2,
           color: c.coral,
           fontFamily: baskerville,
           fontWeight: 700,
-          fontSize: 44,
+          fontSize: 32,
           display: "grid",
           placeItems: "center",
+          marginTop: 4,
         }}
       >
         0{index + 1}
       </div>
-      <div style={{ flex: 1 }}>
+      <div style={{ flex: 1, paddingRight: bonus ? 90 : 0 }}>
         <div
           style={{
             fontFamily: baskerville,
             color: c.navy,
-            fontSize: 44,
+            fontSize: 32,
             fontWeight: 700,
             lineHeight: 1.15,
-            letterSpacing: -0.5,
+            letterSpacing: -0.4,
+            marginBottom: 6,
           }}
         >
           {title}
@@ -104,13 +123,12 @@ const Feat: React.FC<{
           style={{
             fontFamily: alegreya,
             color: c.ink,
-            fontSize: 30,
-            fontWeight: 500,
+            fontSize: 22,
+            fontWeight: 400,
             lineHeight: 1.35,
-            marginTop: 8,
           }}
         >
-          {sub}
+          {desc}
         </div>
       </div>
     </div>
@@ -128,13 +146,13 @@ export const Inside: React.FC = () => {
     { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
   );
 
-  const eyebrow = interpolate(frame, [0, 16], [0, 1], {
+  const eyebrow = interpolate(frame, [0, 14], [0, 1], {
     extrapolateRight: "clamp",
   });
-  const head = interpolate(frame, [8, 28], [0, 1], {
+  const head = interpolate(frame, [6, 26], [0, 1], {
     extrapolateRight: "clamp",
   });
-  const headY = interpolate(frame, [8, 28], [22, 0], {
+  const headY = interpolate(frame, [6, 26], [22, 0], {
     extrapolateRight: "clamp",
   });
 
@@ -142,8 +160,8 @@ export const Inside: React.FC = () => {
     <AbsoluteFill style={{ background: c.cream, opacity: exitOpacity }}>
       <AbsoluteFill
         style={{
-          padding: 80,
-          paddingTop: 130,
+          padding: 60,
+          paddingTop: 80,
           flexDirection: "column",
         }}
       >
@@ -151,12 +169,12 @@ export const Inside: React.FC = () => {
           style={{
             fontFamily: alegreya,
             color: c.coral,
-            fontSize: 30,
-            fontWeight: 600,
+            fontSize: 28,
+            fontWeight: 700,
             letterSpacing: 8,
             textTransform: "uppercase",
             opacity: eyebrow,
-            marginBottom: 22,
+            marginBottom: 18,
           }}
         >
           What you get
@@ -166,17 +184,16 @@ export const Inside: React.FC = () => {
           style={{
             fontFamily: baskerville,
             color: c.navy,
-            fontSize: 82,
+            fontSize: 70,
             fontWeight: 700,
             lineHeight: 1.05,
             letterSpacing: -1,
             opacity: head,
             transform: `translateY(${headY}px)`,
-            marginBottom: 50,
+            marginBottom: 36,
           }}
         >
-          5 days,
-          <br />
+          5 days,{" "}
           <span style={{ fontStyle: "italic", color: c.coral, fontWeight: 500 }}>
             properly supported.
           </span>
@@ -186,7 +203,7 @@ export const Inside: React.FC = () => {
           style={{
             display: "flex",
             flexDirection: "column",
-            gap: 22,
+            gap: 14,
           }}
         >
           {items.map((it, i) => (
@@ -194,7 +211,7 @@ export const Inside: React.FC = () => {
               key={it.t}
               index={i}
               title={it.t}
-              sub={it.s}
+              desc={it.d}
               bonus={it.bonus}
               baseDelay={28}
             />

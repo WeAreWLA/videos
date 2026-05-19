@@ -61,7 +61,7 @@ export const CTA: React.FC = () => {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          gap: 50,
+          gap: 80,
         }}
       >
         <div
@@ -86,8 +86,9 @@ export const CTA: React.FC = () => {
               color: c.cream,
               fontSize: 138,
               fontWeight: 700,
-              lineHeight: 1,
+              lineHeight: 1.15,
               letterSpacing: -1,
+              marginBottom: 20,
             }}
           >
             Join the
@@ -99,7 +100,7 @@ export const CTA: React.FC = () => {
               fontSize: 138,
               fontStyle: "italic",
               fontWeight: 500,
-              lineHeight: 1.05,
+              lineHeight: 1.2,
             }}
           >
             Free 5 Day Reset
@@ -120,6 +121,7 @@ export const CTA: React.FC = () => {
           }}
         >
           Usually £47 · <span style={{ color: c.coralSoft }}>Free this round</span>
+          <br />
           <br />
           Kickoff Monday 1st June
         </div>

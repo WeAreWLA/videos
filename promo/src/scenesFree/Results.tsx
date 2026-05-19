@@ -112,32 +112,19 @@ export const Results: React.FC = () => {
       >
         <div
           style={{
-            fontFamily: alegreya,
-            color: c.coralSoft,
-            fontSize: 30,
-            fontWeight: 600,
-            letterSpacing: 8,
-            textTransform: "uppercase",
-            marginBottom: 18,
-          }}
-        >
-          Real results
-        </div>
-        <div
-          style={{
             fontFamily: baskerville,
             color: c.cream,
-            fontSize: 88,
+            fontSize: 96,
             fontWeight: 700,
             lineHeight: 1.05,
             letterSpacing: -1,
-            textShadow: "0 2px 30px rgba(0,0,0,0.5)",
+            textShadow: "0 2px 30px rgba(0,0,0,0.55)",
           }}
         >
-          From real
+          Real Women,
           <br />
           <span style={{ fontStyle: "italic", color: c.coralSoft, fontWeight: 500 }}>
-            WLA women.
+            Real Results.
           </span>
         </div>
       </div>

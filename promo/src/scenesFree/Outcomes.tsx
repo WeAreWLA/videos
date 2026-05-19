@@ -7,32 +7,58 @@ import {
   useVideoConfig,
 } from "remotion";
 import { colorsFree as c } from "../lib/brandFree";
-import { portraits } from "../lib/brand";
 import { baskerville, alegreya } from "../lib/fonts";
-import { SafeImg } from "../lib/SafeImg";
 
 const items = [
-  { stat: "2–7 lbs", t: "Scales shift by day 5" },
-  { stat: "1–3 days", t: "Sugar cravings handled" },
-  { stat: "All day", t: "Steady, balanced energy" },
+  {
+    stat: "2–7 lbs",
+    t: "Scales shift by day 5",
+    d: "Many women notice the scales drop by day 5, largely from reduced bloating and water retention that builds up from processed foods, sugar and inconsistent eating habits.",
+  },
+  {
+    stat: "1–3 days",
+    t: "Sugar cravings handled",
+    d: "Within the first 1–3 days, the afternoon snacking pull starts to fade and the snack cycle breaks.",
+  },
+  {
+    stat: "All day",
+    t: "Steady, balanced energy",
+    d: "No more afternoon crashes or evening energy dips. Feel fuller, clearer, and more in control throughout the day.",
+  },
+  {
+    stat: "Real food",
+    t: "No banned lists",
+    d: "Proper meals built around protein, vegetables and the right carbs at the right time.",
+  },
+  {
+    stat: "Real life",
+    t: "Food you'll actually enjoy",
+    d: "Flexible meals that work around work, kids, social plans and busy days, without feeling like you're \"on a diet\".",
+  },
+  {
+    stat: "5 days +",
+    t: "A reset you can keep going",
+    d: "Habits that compound for the next 4 weeks. Not a one-off you start over from on Monday.",
+  },
 ];
 
 const Outcome: React.FC<{
   index: number;
   stat: string;
-  text: string;
+  title: string;
+  desc: string;
   baseDelay: number;
-}> = ({ index, stat, text, baseDelay }) => {
+}> = ({ index, stat, title, desc, baseDelay }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  const delay = baseDelay + index * 14;
+  const delay = baseDelay + index * 10;
   const enter = spring({
     frame: frame - delay,
     fps,
     config: { damping: 20, mass: 0.55 },
   });
-  const y = interpolate(enter, [0, 1], [40, 0]);
+  const y = interpolate(enter, [0, 1], [30, 0]);
 
   return (
     <div
@@ -40,26 +66,25 @@ const Outcome: React.FC<{
         position: "relative",
         background: c.paper,
         border: `1px solid rgba(14,39,70,0.08)`,
-        borderRadius: 18,
-        padding: "38px 36px 32px",
+        borderRadius: 16,
+        padding: "22px 24px 20px",
         opacity: enter,
         transform: `translateY(${y}px)`,
-        boxShadow: "0 24px 50px -28px rgba(14,39,70,0.22)",
-        flex: 1,
+        boxShadow: "0 18px 40px -26px rgba(14,39,70,0.22)",
         display: "flex",
         flexDirection: "column",
-        gap: 14,
+        gap: 6,
       }}
     >
       <div
         style={{
           position: "absolute",
           top: 0,
-          left: 28,
-          right: 28,
-          height: 6,
+          left: 22,
+          right: 22,
+          height: 4,
           background: c.coral,
-          borderRadius: "0 0 6px 6px",
+          borderRadius: "0 0 4px 4px",
         }}
       />
       <div
@@ -68,9 +93,10 @@ const Outcome: React.FC<{
           color: c.coral,
           fontStyle: "italic",
           fontWeight: 500,
-          fontSize: 44,
+          fontSize: 30,
           lineHeight: 1,
           letterSpacing: -0.5,
+          marginTop: 4,
         }}
       >
         {stat}
@@ -79,91 +105,25 @@ const Outcome: React.FC<{
         style={{
           fontFamily: baskerville,
           color: c.navy,
-          fontSize: 36,
+          fontSize: 28,
           fontWeight: 700,
-          lineHeight: 1.2,
+          lineHeight: 1.15,
           letterSpacing: -0.5,
+          marginTop: 4,
         }}
       >
-        {text}
+        {title}
       </div>
-    </div>
-  );
-};
-
-const FounderTag: React.FC<{ baseDelay: number }> = ({ baseDelay }) => {
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-
-  const enter = spring({
-    frame: frame - baseDelay,
-    fps,
-    config: { damping: 22, mass: 0.7 },
-  });
-  const y = interpolate(enter, [0, 1], [20, 0]);
-
-  return (
-    <div
-      style={{
-        marginTop: "auto",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: 28,
-        opacity: enter,
-        transform: `translateY(${y}px)`,
-        paddingTop: 40,
-      }}
-    >
       <div
         style={{
-          width: 200,
-          height: 200,
-          borderRadius: "50%",
-          overflow: "hidden",
-          border: `3px solid ${c.coral}`,
-          flexShrink: 0,
+          fontFamily: alegreya,
+          color: c.ink,
+          fontSize: 18,
+          fontWeight: 400,
+          lineHeight: 1.35,
         }}
       >
-        <SafeImg
-          src={portraits.laptop}
-          label="Anna"
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            objectPosition: "70% 30%",
-          }}
-        />
-      </div>
-      <div>
-        <div
-          style={{
-            fontFamily: baskerville,
-            color: c.navy,
-            fontSize: 48,
-            fontWeight: 700,
-            lineHeight: 1,
-          }}
-        >
-          Anna Wallace
-        </div>
-        <div
-          style={{
-            fontFamily: alegreya,
-            color: c.coral,
-            fontSize: 22,
-            fontWeight: 600,
-            letterSpacing: 4,
-            textTransform: "uppercase",
-            marginTop: 10,
-            lineHeight: 1.3,
-          }}
-        >
-          BSc · Registered
-          <br />
-          Associate Nutritionist
-        </div>
+        {desc}
       </div>
     </div>
   );
@@ -180,13 +140,13 @@ export const Outcomes: React.FC = () => {
     { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
   );
 
-  const eyebrow = interpolate(frame, [0, 16], [0, 1], {
+  const eyebrow = interpolate(frame, [0, 14], [0, 1], {
     extrapolateRight: "clamp",
   });
-  const head = interpolate(frame, [8, 28], [0, 1], {
+  const head = interpolate(frame, [6, 26], [0, 1], {
     extrapolateRight: "clamp",
   });
-  const headY = interpolate(frame, [8, 28], [22, 0], {
+  const headY = interpolate(frame, [6, 26], [22, 0], {
     extrapolateRight: "clamp",
   });
 
@@ -194,8 +154,8 @@ export const Outcomes: React.FC = () => {
     <AbsoluteFill style={{ background: c.cream2, opacity: exitOpacity }}>
       <AbsoluteFill
         style={{
-          padding: 70,
-          paddingTop: 130,
+          padding: 60,
+          paddingTop: 90,
           flexDirection: "column",
         }}
       >
@@ -204,43 +164,42 @@ export const Outcomes: React.FC = () => {
             fontFamily: alegreya,
             color: c.coral,
             fontSize: 30,
-            fontWeight: 600,
+            fontWeight: 700,
             letterSpacing: 8,
             textTransform: "uppercase",
             opacity: eyebrow,
-            marginBottom: 22,
+            marginBottom: 18,
             textAlign: "center",
           }}
         >
-          Your 5-day wins
+          What you'll walk away with
         </div>
 
         <div
           style={{
             fontFamily: baskerville,
             color: c.navy,
-            fontSize: 78,
+            fontSize: 110,
             fontWeight: 700,
-            lineHeight: 1.05,
-            letterSpacing: -1,
+            lineHeight: 1.0,
+            letterSpacing: -2,
             opacity: head,
             transform: `translateY(${headY}px)`,
-            marginBottom: 50,
+            marginBottom: 40,
             textAlign: "center",
           }}
         >
-          What changes by
-          <br />
+          Your{" "}
           <span style={{ fontStyle: "italic", color: c.coral, fontWeight: 500 }}>
-            Friday.
+            5 day wins.
           </span>
         </div>
 
         <div
           style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: 22,
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: 16,
           }}
         >
           {items.map((it, i) => (
@@ -248,13 +207,12 @@ export const Outcomes: React.FC = () => {
               key={it.t}
               index={i}
               stat={it.stat}
-              text={it.t}
+              title={it.t}
+              desc={it.d}
               baseDelay={28}
             />
           ))}
         </div>
-
-        <FounderTag baseDelay={130} />
       </AbsoluteFill>
     </AbsoluteFill>
   );
