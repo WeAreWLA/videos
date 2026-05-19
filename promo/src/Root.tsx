@@ -1,6 +1,7 @@
 import "./index.css";
 import { Composition } from "remotion";
 import { Promo, TOTAL_DURATION } from "./Composition";
+import { FreeReset, FREE_RESET_TOTAL } from "./FreeReset";
 import { RecipePoster } from "./recipes/RecipePoster";
 import { RecipeReel, REEL_TOTAL } from "./recipes/RecipeReel";
 import {
@@ -19,6 +20,15 @@ export const RemotionRoot: React.FC = () => {
         id="Promo"
         component={Promo}
         durationInFrames={TOTAL_DURATION}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+
+      <Composition
+        id="FreeReset"
+        component={FreeReset}
+        durationInFrames={FREE_RESET_TOTAL}
         fps={30}
         width={1080}
         height={1920}
